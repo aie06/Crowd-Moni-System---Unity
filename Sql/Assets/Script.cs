@@ -7,8 +7,6 @@ using QRCoder;
 using QRCoder.Unity;
 using System;
 
-
-
 public class Script : MonoBehaviour
 {
     public Image img;
