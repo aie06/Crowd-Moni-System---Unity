@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using QRCoder;
 using QRCoder.Unity;
 using System;
+using System.Windows;
 
 public class Script : MonoBehaviour
 {
