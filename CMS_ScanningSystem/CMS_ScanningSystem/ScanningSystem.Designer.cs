@@ -54,17 +54,19 @@
             this.LeftContainer.Controls.Add(this.LeftContainerBottom);
             this.LeftContainer.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftContainer.Location = new System.Drawing.Point(0, 0);
+            this.LeftContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LeftContainer.Name = "LeftContainer";
-            this.LeftContainer.Size = new System.Drawing.Size(199, 900);
+            this.LeftContainer.Size = new System.Drawing.Size(133, 600);
             this.LeftContainer.TabIndex = 0;
             // 
             // LeftContainerBottom
             // 
             this.LeftContainerBottom.Controls.Add(this.btnRoom);
             this.LeftContainerBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.LeftContainerBottom.Location = new System.Drawing.Point(0, 780);
+            this.LeftContainerBottom.Location = new System.Drawing.Point(0, 520);
+            this.LeftContainerBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LeftContainerBottom.Name = "LeftContainerBottom";
-            this.LeftContainerBottom.Size = new System.Drawing.Size(199, 120);
+            this.LeftContainerBottom.Size = new System.Drawing.Size(133, 80);
             this.LeftContainerBottom.TabIndex = 1;
             // 
             // btnRoom
@@ -76,9 +78,10 @@
             this.btnRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRoom.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoom.ForeColor = System.Drawing.Color.White;
-            this.btnRoom.Location = new System.Drawing.Point(12, 14);
+            this.btnRoom.Location = new System.Drawing.Point(8, 9);
+            this.btnRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRoom.Name = "btnRoom";
-            this.btnRoom.Size = new System.Drawing.Size(181, 94);
+            this.btnRoom.Size = new System.Drawing.Size(121, 63);
             this.btnRoom.TabIndex = 1;
             this.btnRoom.Text = "Change Room";
             this.btnRoom.UseVisualStyleBackColor = false;
@@ -88,9 +91,10 @@
             // 
             this.RightContainer.BackColor = System.Drawing.Color.Transparent;
             this.RightContainer.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RightContainer.Location = new System.Drawing.Point(1000, 0);
+            this.RightContainer.Location = new System.Drawing.Point(667, 0);
+            this.RightContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RightContainer.Name = "RightContainer";
-            this.RightContainer.Size = new System.Drawing.Size(200, 900);
+            this.RightContainer.Size = new System.Drawing.Size(133, 600);
             this.RightContainer.TabIndex = 1;
             // 
             // TopContainer
@@ -99,9 +103,10 @@
             this.TopContainer.Controls.Add(this.lbRoomName);
             this.TopContainer.Controls.Add(this.txtScan);
             this.TopContainer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopContainer.Location = new System.Drawing.Point(199, 0);
+            this.TopContainer.Location = new System.Drawing.Point(133, 0);
+            this.TopContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TopContainer.Name = "TopContainer";
-            this.TopContainer.Size = new System.Drawing.Size(801, 250);
+            this.TopContainer.Size = new System.Drawing.Size(534, 167);
             this.TopContainer.TabIndex = 2;
             // 
             // lbRoomName
@@ -110,8 +115,9 @@
             this.lbRoomName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbRoomName.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRoomName.Location = new System.Drawing.Point(0, 0);
+            this.lbRoomName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbRoomName.Name = "lbRoomName";
-            this.lbRoomName.Size = new System.Drawing.Size(801, 164);
+            this.lbRoomName.Size = new System.Drawing.Size(534, 109);
             this.lbRoomName.TabIndex = 1;
             this.lbRoomName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -122,10 +128,11 @@
             this.txtScan.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtScan.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScan.ForeColor = System.Drawing.Color.White;
-            this.txtScan.Location = new System.Drawing.Point(0, 191);
+            this.txtScan.Location = new System.Drawing.Point(0, 127);
+            this.txtScan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtScan.Name = "txtScan";
             this.txtScan.PasswordChar = '*';
-            this.txtScan.Size = new System.Drawing.Size(801, 59);
+            this.txtScan.Size = new System.Drawing.Size(534, 40);
             this.txtScan.TabIndex = 0;
             this.txtScan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtScan.TextChanged += new System.EventHandler(this.txtScan_TextChanged);
@@ -137,9 +144,10 @@
             this.CenterContainer.Controls.Add(this.lbTime);
             this.CenterContainer.Controls.Add(this.lbName);
             this.CenterContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CenterContainer.Location = new System.Drawing.Point(199, 250);
+            this.CenterContainer.Location = new System.Drawing.Point(133, 167);
+            this.CenterContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CenterContainer.Name = "CenterContainer";
-            this.CenterContainer.Size = new System.Drawing.Size(801, 650);
+            this.CenterContainer.Size = new System.Drawing.Size(534, 433);
             this.CenterContainer.TabIndex = 3;
             // 
             // lbTimeInOrOut
@@ -147,9 +155,10 @@
             this.lbTimeInOrOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTimeInOrOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbTimeInOrOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTimeInOrOut.Location = new System.Drawing.Point(0, 229);
+            this.lbTimeInOrOut.Location = new System.Drawing.Point(0, 153);
+            this.lbTimeInOrOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTimeInOrOut.Name = "lbTimeInOrOut";
-            this.lbTimeInOrOut.Size = new System.Drawing.Size(801, 184);
+            this.lbTimeInOrOut.Size = new System.Drawing.Size(534, 122);
             this.lbTimeInOrOut.TabIndex = 2;
             this.lbTimeInOrOut.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbTimeInOrOut.Visible = false;
@@ -159,9 +168,10 @@
             this.lbTime.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lbTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTime.Location = new System.Drawing.Point(0, 413);
+            this.lbTime.Location = new System.Drawing.Point(0, 275);
+            this.lbTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(801, 237);
+            this.lbTime.Size = new System.Drawing.Size(534, 158);
             this.lbTime.TabIndex = 1;
             this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbTime.Visible = false;
@@ -172,8 +182,9 @@
             this.lbName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.Location = new System.Drawing.Point(0, 0);
+            this.lbName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(801, 229);
+            this.lbName.Size = new System.Drawing.Size(534, 153);
             this.lbName.TabIndex = 0;
             this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -187,15 +198,16 @@
             // 
             // ScanningSystem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1200, 900);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.CenterContainer);
             this.Controls.Add(this.TopContainer);
             this.Controls.Add(this.RightContainer);
             this.Controls.Add(this.LeftContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ScanningSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
