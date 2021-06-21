@@ -7,7 +7,8 @@ using System.Data.SqlClient;
 using TMPro;
 using QRCoder;
 using QRCoder.Unity;
-
+using System.IO;
+using System;
 public class DatabaseClass : MonoBehaviour
 {
     public TMP_InputField id;
@@ -18,7 +19,7 @@ public class DatabaseClass : MonoBehaviour
     public Image qrimg;
 
 
-
+    static Texture2D text;
     static string query;
     static SqlCommand cmd;
     string temp;
@@ -46,23 +47,26 @@ public class DatabaseClass : MonoBehaviour
     //            Debug.Log("Connection Open");
     //        }
     //    }
-        //catch (System.Exception ex)
-        //{
-        //    Debug.Log(ex);
-        //}
-      
-        //yield return null;
+    //catch (System.Exception ex)
+    //{
+    //    Debug.Log(ex);
     //}
-    public void InsertMethod()
-    {
+
+    //yield return null;
+    //}
+    public void GenerateQr() {
         QRCodeGenerator qr = new QRCodeGenerator();
-        QRCodeData qRCodeData = qr.CreateQrCode(("["+id.text+"]"), QRCodeGenerator.ECCLevel.H);
+        QRCodeData qRCodeData = qr.CreateQrCode(("[" + id.text + "]"), QRCodeGenerator.ECCLevel.H);
         UnityQRCode code = new UnityQRCode(qRCodeData);
-        Texture2D text = code.GetGraphic(4);
-        byte[] arr = text.ImgToBytes();
-        Texture2D result = arr.BytesToImg();
+        text = code.GetGraphic(4);
         Sprite convert = Sprite.Create(text, new Rect(0, 0, text.width, text.height), Vector2.one * .5f);
         qrimg.sprite = convert;
+    }
+    public void InsertMethod()
+    {
+        
+        byte[] arr = text.ImgToBytes();      
+      
         con = new SqlConnection(connectionString);
         try
         {
@@ -81,9 +85,20 @@ public class DatabaseClass : MonoBehaviour
         {
             Debug.Log(ex);
         }
-      
-    }
+        var bytes = text.ImgToBytes();
+        var dirPath = Application.dataPath + "/../QRCode Files/";
 
+        if (!Directory.Exists(dirPath))
+        {
+            Directory.CreateDirectory(dirPath);
+        }
+        var fileNameQrCode = lastname.text + ", " + firstname.text + " - " + id.text;
+        File.WriteAllBytes(dirPath + "QRCode - " + fileNameQrCode + ".png", bytes);
+    }
+   
+      
+    
+  
 
 
     // Start is called before the first frame update
