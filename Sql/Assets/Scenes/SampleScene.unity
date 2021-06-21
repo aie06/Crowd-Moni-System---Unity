@@ -451,15 +451,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1532151048}
-        m_MethodName: generateQR
-        m_Mode: 5
+      - m_Target: {fileID: 1532151049}
+        m_MethodName: InsertMethod
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: '[0200043328]'
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &40802320
@@ -7137,6 +7137,7 @@ GameObject:
   - component: {fileID: 1532151045}
   - component: {fileID: 1532151044}
   - component: {fileID: 1532151048}
+  - component: {fileID: 1532151049}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7231,12 +7232,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532151043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6292d7507df4343ab2834a757d2bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1687825958}
+  id: {fileID: 0}
+--- !u!114 &1532151049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532151043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306d9874aa4cee04a883a6e71fa8ae7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: {fileID: 1226127546}
+  course: {fileID: 12132847}
+  lastname: {fileID: 821501572}
+  firstname: {fileID: 2061616540}
+  middlename: {fileID: 1102358853}
+  qrimg: {fileID: 1687825958}
 --- !u!1 &1541589866
 GameObject:
   m_ObjectHideFlags: 0
@@ -8363,8 +8383,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306d9874aa4cee04a883a6e71fa8ae7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fname: {fileID: 2061616540}
-  lname: {fileID: 821501572}
+  id: {fileID: 0}
+  course: {fileID: 0}
+  lastname: {fileID: 0}
+  firstname: {fileID: 0}
+  middlename: {fileID: 0}
+  qrimg: {fileID: 0}
 --- !u!1 &1743489355
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class DatabaseClass : MonoBehaviour
     static SqlCommand cmd;
     string temp;
     SqlConnection con;
-    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = sample; User ID = sa; Password=adminaie";
+    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=adminaie";
 
     void Start()
     {
@@ -56,19 +56,21 @@ public class DatabaseClass : MonoBehaviour
     public void InsertMethod()
     {
         QRCodeGenerator qr = new QRCodeGenerator();
-        QRCodeData qRCodeData = qr.CreateQrCode(id.text, QRCodeGenerator.ECCLevel.H);
+        QRCodeData qRCodeData = qr.CreateQrCode(("["+id.text+"]"), QRCodeGenerator.ECCLevel.H);
         UnityQRCode code = new UnityQRCode(qRCodeData);
         Texture2D text = code.GetGraphic(4);
+        byte[] arr = text.ImgToBytes();
+        Texture2D result = arr.BytesToImg();
+        Sprite convert = Sprite.Create(text, new Rect(0, 0, text.width, text.height), Vector2.one * .5f);
+        qrimg.sprite = convert;
         con = new SqlConnection(connectionString);
         try
         {
-            byte[] convert;
-            convert = text.EncodeToPNG();
-            
+
             con.Open();
             if (con.State == ConnectionState.Open)
             {
-                query = "INSERT INTO INFORMATION(ID,COURSE_AND_YEAR,LAST_NAME,FIRST_NAME,MIDDLE_NAME, QRCODE)VALUES('" + id.text + "','" + course.text + "','" + lastname.text + "','" + firstname.text + "','" + middlename.text + "' , '" + convert + "')";
+                query = "INSERT INTO INFORMATION(ID,COURSE_AND_YEAR,LAST_NAME,FIRST_NAME,MIDDLE_NAME, QRCODE)VALUES('" + id.text + "','" + course.text + "','" + lastname.text + "','" + firstname.text + "','" + middlename.text + "' , '" + arr + "')";
                 cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
