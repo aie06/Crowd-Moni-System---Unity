@@ -7,15 +7,17 @@ using QRCoder;
 using QRCoder.Unity;
 using System;
 using System.Windows;
+using TMPro;
+
 
 public class Script : MonoBehaviour
 {
     public Image img;
-
-    public void generateQR(string data)
+    public TMP_InputField id;
+    public void generateQR()
     {
         QRCodeGenerator qr = new QRCodeGenerator();
-        QRCodeData qRCodeData = qr.CreateQrCode(data, QRCodeGenerator.ECCLevel.H);
+        QRCodeData qRCodeData = qr.CreateQrCode(id.text, QRCodeGenerator.ECCLevel.H);
         UnityQRCode code = new UnityQRCode(qRCodeData);
         Texture2D text = code.GetGraphic(4);
        
