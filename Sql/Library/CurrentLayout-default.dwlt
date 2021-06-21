@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 276
     height: 645
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -472,7 +472,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 570.31915
+  m_LastVerticalScrollValue: 0
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -501,10 +501,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 116}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6afbffff
+      m_ExpandedIDs: 66fbffff02340000ae340000c6340000f8350000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -564,9 +564,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 374.29755, y: 185.41728, z: -1670.3906}
+    m_Target: {x: 407.91016, y: 143.13731, z: -1739.5469}
     speed: 2
-    m_Value: {x: 374.29755, y: 185.41728, z: -1670.3906}
+    m_Value: {x: 407.91016, y: 143.13731, z: -1739.5469}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -616,9 +616,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 140.14378
+    m_Target: 93.33244
     speed: 2
-    m_Value: 140.14378
+    m_Value: 93.33244
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -692,10 +692,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -314
-    m_HBaseRangeMax: 314
-    m_VBaseRangeMin: -176.5
-    m_VBaseRangeMax: 176.5
+    m_HBaseRangeMin: -295
+    m_HBaseRangeMax: 295
+    m_VBaseRangeMin: -166
+    m_VBaseRangeMax: 166
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -712,11 +712,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 0
+      y: 21
       width: 812
-      height: 353
+      height: 332
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 406, y: 176.5}
+    m_Translation: {x: 406, y: 166}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -724,9 +724,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -406
-      y: -176.5
+      y: -166
       width: 812
-      height: 353
+      height: 332
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 812, y: 353}
