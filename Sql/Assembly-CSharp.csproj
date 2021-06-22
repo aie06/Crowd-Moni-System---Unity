@@ -68,6 +68,7 @@
     <Compile Include="Assets\DataConverter.cs" />
     <Compile Include="Assets\DatabaseClass.cs" />
     <Compile Include="Assets\Script.cs" />
+    <Compile Include="Assets\ViewInformation.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Packages\System.Drawing.Common.4.5.0-preview1-25914-04\version.txt" />
