@@ -17,15 +17,17 @@ public class ViewInformation : MonoBehaviour
     [Header("Table Viewer Settings")]
     public Transform viewerContainer;
     public GameObject dataEntry;
+    public TMP_Dropdown filteringInfo;
 
     [Header("Attendance Viewer Settings")]
     public Transform attendanceContainer;
+    public GameObject dataEntryAttendance;
     public BuildingName Building = BuildingName.None;
     public FloorLevel Floor = FloorLevel.None;
     public RoomNumber Room = RoomNumber.None;
 
     string query;
-    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=adminaie";
+    string connectionString = @"Data Source=CHA_ROLD,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=cha08";
     SqlConnection con;
     SqlCommand cmd;
     SqlDataReader rd;
@@ -40,12 +42,18 @@ public class ViewInformation : MonoBehaviour
         con.Open();
         if (con.State == ConnectionState.Open)
         {
+            if(filteringInfo.options[filteringInfo.value].text.Equals("All"))
+                query = "SELECT * FROM INFORMATION";
+            else if(filteringInfo.options[filteringInfo.value].text.Equals("Faculty"))
+                query = "SELECT * FROM INFORMATION WHERE COURSE_AND_YEAR = 'FACULTY'";
+            else if(filteringInfo.options[filteringInfo.value].text.Equals("Staff"))
+                query = "SELECT * FROM INFORMATION WHERE COURSE_AND_YEAR = 'STAFF'";
+            else
+                query = "SELECT * FROM INFORMATION WHERE COURSE_AND_YEAR != 'FACULTY' AND COURSE_AND_YEAR != 'STAFF'";
 
-            query = "SELECT * FROM INFORMATION";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
-            float templateView = 20f;
             while (rd.Read()) {
                 GameObject obj = Instantiate(dataEntry, viewerContainer);
                 obj.GetComponent<DataEntry>().Initialize(
@@ -92,21 +100,20 @@ public class ViewInformation : MonoBehaviour
         if (con.State == ConnectionState.Open)
         {
 
-            query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
-            Debug.Log(query);
+            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
+            query = "SELECT * FROM ATTENDANCE ";
+            //Debug.Log(query);
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
-            float templateView = 20f;
             while (rd.Read())
             {
-                GameObject obj = Instantiate(dataEntry, attendanceContainer);
-                obj.GetComponent<DataEntry>().Initialize(
-                    rd["ID"].ToString(),
+                GameObject obj = Instantiate(dataEntryAttendance, attendanceContainer);
+                obj.GetComponent<DataEntryAttendance>().Initialize(
+                    rd["nAME"].ToString(),
                     rd["COURSE_AND_YEAR"].ToString(),
-                    rd["LAST_NAME"].ToString(),
-                    rd["FIRST_NAME"].ToString(),
-                    rd["MIDDLE_NAME"].ToString());
+                    rd["TIME"].ToString(),
+                    rd["REMARKS"].ToString());
                 obj.transform.localScale = Vector3.one;
             }
         }

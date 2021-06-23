@@ -24,7 +24,7 @@ public class DatabaseClass : MonoBehaviour
     static SqlCommand cmd;
     string temp;
     SqlConnection con;
-    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=adminaie";
+    string connectionString = @"Data Source=CHA_ROLD,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=cha08";
 
     void Start()
     {
@@ -74,17 +74,19 @@ public class DatabaseClass : MonoBehaviour
             con.Open();
             if (con.State == ConnectionState.Open)
             {
-                query = "INSERT INTO INFORMATION(ID,COURSE_AND_YEAR,LAST_NAME,FIRST_NAME,MIDDLE_NAME, QRCODE)VALUES('" + id.text + "','" + course.text + "','" + lastname.text + "','" + firstname.text + "','" + middlename.text + "' , '" + arr + "')";
+                query = "INSERT INTO INFORMATION(ID,COURSE_AND_YEAR,LAST_NAME,FIRST_NAME,MIDDLE_NAME, QRCODE)VALUES('" + id.text + "','" + course.text.ToUpper() + "','" + lastname.text.ToUpper() + "','" + firstname.text.ToUpper() + "','" + middlename.text.ToUpper() + "' , '" + arr + "')";
                 cmd = new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 Debug.Log("Connection Open");
             }
+            
         }
         catch (System.Exception ex)
         {
             Debug.Log(ex);
         }
+        con.Close();
         var bytes = text.ImgToBytes();
         var dirPath = Application.dataPath + "/../QRCode Files/";
 
@@ -94,11 +96,17 @@ public class DatabaseClass : MonoBehaviour
         }
         var fileNameQrCode = lastname.text + ", " + firstname.text + " - " + id.text;
         File.WriteAllBytes(dirPath + "QRCode - " + fileNameQrCode + ".png", bytes);
+        ResetData();
     }
    
-      
-    
-  
+    public void ResetData()
+    {
+        id.text = null;
+        course.text = null;
+        lastname.text = null;
+        firstname.text = null;
+        middlename.text = null;
+    }
 
 
     // Start is called before the first frame update
