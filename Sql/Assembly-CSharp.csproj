@@ -69,6 +69,7 @@
     <Compile Include="Assets\DataEntry.cs" />
     <Compile Include="Assets\DatabaseClass.cs" />
     <Compile Include="Assets\EnumHelper.cs" />
+    <Compile Include="Assets\PieGraph.cs" />
     <Compile Include="Assets\Script.cs" />
     <Compile Include="Assets\ViewInformation.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
