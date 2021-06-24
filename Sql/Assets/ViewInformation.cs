@@ -165,19 +165,19 @@ public class ViewInformation : MonoBehaviour
             }
         }
         buildingEmpty.text = filterBuilding.options[0].text;
-        con.Close();
        
     }
 
     public void FilteringFloor()
     {
-       
+        if (buildingEmpty.text.Equals("All"))
+            filterFloor.gameObject.SetActive(false);
         con = new SqlConnection(connectionString);
         filterFloor.ClearOptions();
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-            query = "SELECT FLOOR_NO FROM FLOOR_INFO WHERE BUILDING_NAME = '"+filterBuilding.options[filterBuilding.value].text+"'";
+            query = "SELECT FLOOR_NO FROM FLOOR_INFO WHERE BUILDING_NAME = '"+buildingEmpty.text+"'";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
             filterFloor.options.Add(new TMP_Dropdown.OptionData() { text = "All" });
@@ -187,7 +187,6 @@ public class ViewInformation : MonoBehaviour
             }
         }
         floorEmpty.text = filterFloor.options[0].text;
-        con.Close();
        
     }
 
@@ -198,7 +197,7 @@ public class ViewInformation : MonoBehaviour
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-            query = "SELECT ROOM_NO FROM ROOM_INFO WHERE BUILDING_NAME ='"+ filterBuilding.options[filterBuilding.value].text + "'AND FLOOR_NO = '"+ filterFloor.options[filterFloor.value].text + "'";
+            query = "SELECT ROOM_NO FROM ROOM_INFO WHERE BUILDING_NAME ='"+ buildingEmpty.text + "'AND FLOOR_NO = '"+ floorEmpty.text + "'";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
             filterRoom.options.Add(new TMP_Dropdown.OptionData() { text = "All"});
@@ -208,7 +207,6 @@ public class ViewInformation : MonoBehaviour
             }
         }
         roomEmpty.text = filterRoom.options[0].text;
-        con.Close();
        
     }
     public void ViewAttendacePerBuilding()
@@ -242,6 +240,7 @@ public class ViewInformation : MonoBehaviour
     }
     public void ViewAttendancePerFloor()
     {
+
         con = new SqlConnection(connectionString);
         ResetAttendanceData();
         con.Open();
@@ -250,15 +249,17 @@ public class ViewInformation : MonoBehaviour
 
             //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if (filterFloor.options[filterFloor.value].text.Equals("All"))
-                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + filterBuilding.options[filterBuilding.value].text + "'";
-            else
+                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "'";
+            else 
                 query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR = '" + filterFloor.options[filterFloor.value].text + "'";
-            Debug.Log(filterBuilding.options[filterBuilding.value].text+" - "+filterFloor.options[filterFloor.value].text);
+           
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
-
+            Debug.Log(query);
+           
             while (rd.Read())
             {
+                
                 GameObject obj = Instantiate(dataEntryAttendance, attendanceContainer);
                 obj.GetComponent<DataEntryAttendance>().Initialize(
                     rd["NAME"].ToString(),
