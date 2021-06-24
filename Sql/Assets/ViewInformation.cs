@@ -107,7 +107,8 @@ public class ViewInformation : MonoBehaviour
         {
 
             //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
-            query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE";
+            if(buildingEmpty.text.Equals("All"))
+                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE";
             //Debug.Log(query);
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
@@ -149,73 +150,152 @@ public class ViewInformation : MonoBehaviour
 
     public void FilteringBuilding()
     {
-        buildingEmpty.text = "None";
         con = new SqlConnection(connectionString);
-        filterBuilding.options.Clear();
+        filterBuilding.ClearOptions();
         con.Open();
         if (con.State == ConnectionState.Open)
         {
             query = "SELECT BUILDING_NAME FROM BUILDING_INFO";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
-            filterBuilding.options.Add(new TMP_Dropdown.OptionData() { text = "None" });
+            filterBuilding.options.Add(new TMP_Dropdown.OptionData() { text = "All" });
             while (rd.Read())
             {
                 filterBuilding.options.Add(new TMP_Dropdown.OptionData() { text = rd["BUILDING_NAME"].ToString() });
             }
         }
-        //TMP_DropdownItemSelected(filterBuilding, buildingEmpty);
-        //filterRoom.onValueChanged.AddListener(delegate { TMP_DropdownItemSelected(filterBuilding, buildingEmpty); });
+        buildingEmpty.text = filterBuilding.options[0].text;
+        con.Close();
+       
     }
+
     public void FilteringFloor()
     {
-        floorEmpty.text = filterFloor.options[filterFloor.value].text;
+       
         con = new SqlConnection(connectionString);
-        filterFloor.options.Clear();
+        filterFloor.ClearOptions();
         con.Open();
         if (con.State == ConnectionState.Open)
         {
             query = "SELECT FLOOR_NO FROM FLOOR_INFO WHERE BUILDING_NAME = '"+filterBuilding.options[filterBuilding.value].text+"'";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
-            filterFloor.options.Add(new TMP_Dropdown.OptionData() { text = "None" });
+            filterFloor.options.Add(new TMP_Dropdown.OptionData() { text = "All" });
             while (rd.Read())
             {
                 filterFloor.options.Add(new TMP_Dropdown.OptionData() { text = rd["FLOOR_NO"].ToString() });
             }
         }
-        
-        //TMP_DropdownItemSelected(filterFloor, floorEmpty);
-        //filterRoom.onValueChanged.AddListener(delegate { TMP_DropdownItemSelected(filterFloor, floorEmpty); });
+        floorEmpty.text = filterFloor.options[0].text;
+        con.Close();
+       
     }
+
     public void FilteringRoom()
     {
-        roomEmpty.text = filterRoom.options[filterRoom.value].text;
         con = new SqlConnection(connectionString);
-        filterRoom.options.Clear();
+        filterRoom.ClearOptions();
         con.Open();
         if (con.State == ConnectionState.Open)
         {
             query = "SELECT ROOM_NO FROM ROOM_INFO WHERE BUILDING_NAME ='"+ filterBuilding.options[filterBuilding.value].text + "'AND FLOOR_NO = '"+ filterFloor.options[filterFloor.value].text + "'";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
-            filterRoom.options.Add(new TMP_Dropdown.OptionData() { text = "None"});
+            filterRoom.options.Add(new TMP_Dropdown.OptionData() { text = "All"});
             while (rd.Read())
             {
                 filterRoom.options.Add(new TMP_Dropdown.OptionData() { text = rd["ROOM_NO"].ToString() });
             }
         }
-        //TMP_DropdownItemSelected(filterRoom, roomEmpty);
-        //filterRoom.onValueChanged.AddListener(delegate { TMP_DropdownItemSelected(filterRoom, roomEmpty); });
+        roomEmpty.text = filterRoom.options[0].text;
+        con.Close();
+       
     }
-    //public void TMP_DropdownItemSelected(TMP_Dropdown dropdown, TMP_Text name)
-    //{
-    //    if (name.text.Equals("None"))
-    //    {
-    //        int index = 0;
-    //        name.text = dropdown.options[index].text;
-    //    }           
-            
-        
-    //}
+    public void ViewAttendacePerBuilding()
+    {
+        con = new SqlConnection(connectionString);
+        ResetAttendanceData();
+        con.Open();
+        if (con.State == ConnectionState.Open)
+        {
+
+            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
+            if (filterBuilding.options[filterBuilding.value].text.Equals("All"))
+                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE";
+            else
+                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + filterBuilding.options[filterBuilding.value].text + "'";
+            //Debug.Log(query);
+            cmd = new SqlCommand(query, con);
+            rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                GameObject obj = Instantiate(dataEntryAttendance, attendanceContainer);
+                obj.GetComponent<DataEntryAttendance>().Initialize(
+                    rd["NAME"].ToString(),
+                    rd["COURSE_AND_YEAR"].ToString(),
+                    rd["TIME"].ToString(),
+                    rd["REMARKS"].ToString());
+                obj.transform.localScale = Vector3.one;
+            }
+        }
+    }
+    public void ViewAttendancePerFloor()
+    {
+        con = new SqlConnection(connectionString);
+        ResetAttendanceData();
+        con.Open();
+        if (con.State == ConnectionState.Open)
+        {
+
+            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
+            if (filterFloor.options[filterFloor.value].text.Equals("All"))
+                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + filterBuilding.options[filterBuilding.value].text + "'";
+            else
+                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR = '" + filterFloor.options[filterFloor.value].text + "'";
+            Debug.Log(filterBuilding.options[filterBuilding.value].text+" - "+filterFloor.options[filterFloor.value].text);
+            cmd = new SqlCommand(query, con);
+            rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                GameObject obj = Instantiate(dataEntryAttendance, attendanceContainer);
+                obj.GetComponent<DataEntryAttendance>().Initialize(
+                    rd["NAME"].ToString(),
+                    rd["COURSE_AND_YEAR"].ToString(),
+                    rd["TIME"].ToString(),
+                    rd["REMARKS"].ToString());
+                obj.transform.localScale = Vector3.one;
+            }
+        }
+    }
+    public void ViewAttendancePerRoom()
+    {
+        con = new SqlConnection(connectionString);
+        ResetAttendanceData();
+        con.Open();
+        if (con.State == ConnectionState.Open)
+        {
+            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
+            if (filterRoom.options[filterRoom.value].text.Equals("All"))
+                query = "SELECT  NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE FLOOR = '" + filterFloor.options[filterFloor.value].text + "'";
+            else
+                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR = '" + floorEmpty.text + "' AND ROOM_NO = '" + filterRoom.options[filterRoom.value].text + "'";
+            //Debug.Log(query);
+            cmd = new SqlCommand(query, con);
+            rd = cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                GameObject obj = Instantiate(dataEntryAttendance, attendanceContainer);
+                obj.GetComponent<DataEntryAttendance>().Initialize(
+                    rd["NAME"].ToString(),
+                    rd["COURSE_AND_YEAR"].ToString(),
+                    rd["TIME"].ToString(),
+                    rd["REMARKS"].ToString());
+                obj.transform.localScale = Vector3.one;
+            }
+        }
+    }
+  
 }
