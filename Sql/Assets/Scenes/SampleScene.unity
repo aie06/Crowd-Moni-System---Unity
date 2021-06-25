@@ -4306,12 +4306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb8161db67268a4c85e93f86ca372b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  values:
-  - 1.1
-  - 2.2
-  - 1.1
-  - 2.2
-  - 1.4
+  values: []
   wedgeColors:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0.5849056, g: 0, b: 0.09266387, a: 1}

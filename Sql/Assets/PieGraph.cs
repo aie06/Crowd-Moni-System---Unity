@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Data.SqlClient;
 
 
 public class PieGraph : MonoBehaviour
@@ -9,6 +10,10 @@ public class PieGraph : MonoBehaviour
     public float[] values;
     public Color[] wedgeColors;
     public Image wedgePrefab;
+    SqlConnection con;
+    SqlCommand cmd;
+    string query;
+    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=adminaie";
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +22,19 @@ public class PieGraph : MonoBehaviour
     }
     public void MakeGraph()
     {
-        float total = 0f;
+        float total = 1f;
         float zRotation = 0f;
-        for (int i = 0; i < values.Length; i++)
-        {
-            total += values[i];
-        }
+        //for (int i = 0; i < values.Length; i++)
+        //{
+        //    total += values[i];
+        //}
 
+
+        float []values= new float[5];
+        for (int i = 0; i < values.Length; i++) {
+            values[i] = i;
+            total += i;
+        }
 
         for (int i = 0; i < values.Length; i++)
         {
@@ -31,8 +42,9 @@ public class PieGraph : MonoBehaviour
             newWedge.transform.SetParent(transform, false);
             newWedge.color = wedgeColors[i];
             newWedge.fillAmount = values[i] / total;
-            newWedge.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, zRotation)); ;
+            newWedge.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, zRotation)); 
             zRotation -= newWedge.fillAmount * 360f;
+
         }
 
     }
