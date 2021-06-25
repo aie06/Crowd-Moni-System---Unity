@@ -24,7 +24,7 @@ public class DatabaseClass : MonoBehaviour
     static SqlCommand cmd;
     string temp;
     SqlConnection con;
-    string connectionString = @"Data Source=CHA_ROLD,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=cha08";
+    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=adminaie";
 
     void Start()
     {
