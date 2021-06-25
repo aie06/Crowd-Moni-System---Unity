@@ -92,7 +92,7 @@ public class ViewInformation : MonoBehaviour
         if (con.State == ConnectionState.Open)
         {
 
-            query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
+            query = "SELECT * FROM INFORMATION";
             Debug.Log(query);
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
