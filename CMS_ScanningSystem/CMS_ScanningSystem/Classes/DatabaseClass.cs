@@ -13,7 +13,7 @@ namespace CMS_ScanningSystem.Classes
     class DatabaseClass
     {
 
-        static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Crowd_Monitoring_System\CMS_ScanningSystem\CMS_ScanningSystem\Room_Database.mdf;Integrated Security=True");
+        static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Client-System\CMS_ScanningSystem\CMS_ScanningSystem\Room_Database.mdf;Integrated Security=True");
         static SqlConnection serverCon = new SqlConnection(@"Data Source=CHA_ROLD;Initial Catalog=CROWD_MONITORING_SYSTEM;Integrated Security=True");
         static SqlCommand cmd;
         static SqlDataAdapter sda, innersda;

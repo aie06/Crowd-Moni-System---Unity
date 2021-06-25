@@ -108,7 +108,7 @@ public class ViewInformation : MonoBehaviour
 
             //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if(buildingEmpty.text.Equals("All"))
-                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE";
+                query = "SELECT * FROM ATTENDANCE";
             //Debug.Log(query);
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
@@ -219,10 +219,10 @@ public class ViewInformation : MonoBehaviour
 
             //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if (filterBuilding.options[filterBuilding.value].text.Equals("All"))
-                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE";
+                query = "SELECT * FROM ATTENDANCE";
             else
-                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + filterBuilding.options[filterBuilding.value].text + "'";
-            //Debug.Log(query);
+                query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '" + filterBuilding.options[filterBuilding.value].text + "'";
+
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
@@ -249,13 +249,15 @@ public class ViewInformation : MonoBehaviour
 
             //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if (filterFloor.options[filterFloor.value].text.Equals("All"))
-                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "'";
-            else 
-                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR = '" + filterFloor.options[filterFloor.value].text + "'";
+            {
+                query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "'";
+                filterRoom.gameObject.SetActive(false);
+            }
+            else
+                query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR_NO = '" + filterFloor.options[filterFloor.value].text + "'";
            
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
-            Debug.Log(query);
            
             while (rd.Read())
             {
@@ -279,10 +281,10 @@ public class ViewInformation : MonoBehaviour
         {
             //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if (filterRoom.options[filterRoom.value].text.Equals("All"))
-                query = "SELECT  NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE FLOOR = '" + filterFloor.options[filterFloor.value].text + "'";
+                query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR_NO = '" + floorEmpty.text + "'";
             else
-                query = "SELECT NAME,COURSE_AND_YEAR,TIME,REMARKS FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR = '" + floorEmpty.text + "' AND ROOM_NO = '" + filterRoom.options[filterRoom.value].text + "'";
-            //Debug.Log(query);
+                query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR_NO = '" + floorEmpty.text + "' AND ROOM_NO = '" + filterRoom.options[filterRoom.value].text + "'";
+
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
