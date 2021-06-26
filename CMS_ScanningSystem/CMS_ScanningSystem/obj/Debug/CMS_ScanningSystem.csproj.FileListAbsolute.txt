@@ -12,3 +12,17 @@ D:\Client-System\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSys
 D:\Client-System\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.csproj.CoreCompileInputs.cache
 D:\Client-System\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.exe
 D:\Client-System\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.pdb
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Debug\Room_Database.mdf
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Debug\Room_Database_log.ldf
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Debug\CMS_ScanningSystem.exe.config
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Debug\CMS_ScanningSystem.exe
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Debug\CMS_ScanningSystem.pdb
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.csprojAssemblyReference.cache
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.Admin.resources
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.RoomChange.resources
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.ScanningSystem.resources
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.Properties.Resources.resources
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.csproj.GenerateResource.cache
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.csproj.CoreCompileInputs.cache
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.exe
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.pdb

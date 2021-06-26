@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Collections;
+using System.Drawing;
 
 namespace CMS_ScanningSystem.Classes
 {
@@ -14,7 +15,7 @@ namespace CMS_ScanningSystem.Classes
     {
 
         static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Client-System\CMS_ScanningSystem\CMS_ScanningSystem\Room_Database.mdf;Integrated Security=True");
-        static SqlConnection serverCon = new SqlConnection(@"Data Source=CHA_ROLD;Initial Catalog=CROWD_MONITORING_SYSTEM;Integrated Security=True");
+        static SqlConnection serverCon = new SqlConnection(@"Data Source=CHA_ROLD,1433;Initial Catalog=CROWD_MONITORING_SYSTEM;User ID=sa;Password=cha08");
         static SqlCommand cmd;
         static SqlDataAdapter sda, innersda;
         static DataTable dt,innerdt;
@@ -73,14 +74,14 @@ namespace CMS_ScanningSystem.Classes
         //SCANNING ATTENDANCE---------------------------------------
         public static void ScanningMethod(string scan, Label lbroomdetails, Label lbname, Label lbtime, Label lbTimeInOrOut)
         {
-            sda = new SqlDataAdapter("SELECT LAST_NAME,FIRST_NAME,MIDDLE_NAME,COURSE_AND_YEAR FROM INFORMATION WHERE ID ='"+ scan + "' ORDER BY ID DESC", serverCon);
+            sda = new SqlDataAdapter("SELECT * FROM INFORMATION WHERE ID ='"+ scan + "'", serverCon);
             dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows.Count > 0)
             {
                 lbtime.Text = DateTime.Now.ToString("hh:mm tt");
                 string[] roomdetails = lbroomdetails.Text.Split('-');
-                innersda = new SqlDataAdapter("SELECT ID FROM ATTENDANCE WHERE ID ='" + scan + "' AND BUILDING_NAME = '"+roomdetails[0].ToString()+ "' AND FLOOR = '" + roomdetails[1].ToString() + "' AND ROOM_NO = '" + roomdetails[2].ToString() + "'", serverCon);
+                innersda = new SqlDataAdapter("SELECT ID FROM ATTENDANCE WHERE ID ='" + scan + "' AND BUILDING_NAME = '" + roomdetails[0].ToString() + "' AND FLOOR_NO = '" + roomdetails[1].ToString() + "' AND ROOM_NO = '" + roomdetails[2].ToString() + "'", serverCon);
                 innerdt = new DataTable();
                 innersda.Fill(innerdt);
                 if (innerdt.Rows.Count > 0)
@@ -89,15 +90,17 @@ namespace CMS_ScanningSystem.Classes
                     {
                         remarks = "OUT";
                         lbTimeInOrOut.Text = "TIME OUT";
+                        lbTimeInOrOut.ForeColor = Color.Red;
                     }
                     else
                     {
                         remarks = "IN";
                         lbTimeInOrOut.Text = "TIME IN";
+                        lbTimeInOrOut.ForeColor = Color.Green;
                     }
-                    query = "INSERT INTO ATTENDANCE(BUILDING_NAME,FLOOR,ROOM_NO,ID,NAME,COURSE_AND_YEAR,TIME,REMARKS)" +
-                      "VALUES('" + roomdetails[0].ToString() + "','" + roomdetails[1].ToString() + "','" + roomdetails[2].ToString() + "','" + scan + "','" + (dt.Rows[0][0].ToString() + ", " + dt.Rows[0][1].ToString() + " " + dt.Rows[0][2].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][3].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
-                    lbname.Text = dt.Rows[0][0].ToString() + ", " + dt.Rows[0][1].ToString() + " " + dt.Rows[0][2].ToString().Substring(0, 1) + ".";
+                    query = "INSERT INTO ATTENDANCE(BUILDING_NAME,FLOOR_NO,ROOM_NO,ID,NAME,COURSE_AND_YEAR,TIME,REMARKS)" +
+                     "VALUES('" + roomdetails[0].ToString() + "','" + roomdetails[1].ToString() + "','" + roomdetails[2].ToString() + "','" + scan + "','" + (dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][1].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
+                    lbname.Text = dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".";
                     cmd = new SqlCommand(query, serverCon);
                     serverCon.Open();
                     cmd.ExecuteNonQuery();
@@ -107,15 +110,21 @@ namespace CMS_ScanningSystem.Classes
                 {
                     remarks = "IN";
                     lbTimeInOrOut.Text = "TIME IN";
-                    query = "INSERT INTO ATTENDANCE(BUILDING_NAME,FLOOR,ROOM_NO,ID,NAME,COURSE_AND_YEAR,TIME,REMARKS)" +
-                      "VALUES('" + roomdetails[0].ToString() + "','" + roomdetails[1].ToString() + "','" + roomdetails[2].ToString() + "','" + scan + "','" + (dt.Rows[0][0].ToString() + ", " + dt.Rows[0][1].ToString() + " " + dt.Rows[0][2].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][3].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
-                    lbname.Text = dt.Rows[0][0].ToString() + ", " + dt.Rows[0][1].ToString() + " " + dt.Rows[0][2].ToString().Substring(0, 1) + ".";
+                    lbTimeInOrOut.ForeColor = Color.Green;
+                    query = "INSERT INTO ATTENDANCE(BUILDING_NAME,FLOOR_NO,ROOM_NO,ID,NAME,COURSE_AND_YEAR,TIME,REMARKS)" +
+                      "VALUES('" + roomdetails[0].ToString() + "','" + roomdetails[1].ToString() + "','" + roomdetails[2].ToString() + "','" + scan + "','" + (dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][1].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
+                    lbname.Text = dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".";
                     cmd = new SqlCommand(query, serverCon);
                     serverCon.Open();
                     cmd.ExecuteNonQuery();
                     serverCon.Close();
                 }
-               
+
+            }
+            else
+            {
+                lbTimeInOrOut.Text = "The QR Code is not registered. Please proceed to the authorized person to registered it.";
+                lbTimeInOrOut.ForeColor = Color.Red;
             }
         }
         // -------------------------------------------------------------------

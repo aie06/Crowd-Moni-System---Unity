@@ -52,7 +52,7 @@ namespace CMS_ScanningSystem
             if (id[id.Length - 1] == ']')
             {
                 time = new Timer();
-                counter = 2;
+                counter = 4;
                 time.Interval = 1000;
                 time.Tick += new EventHandler(timer_Tick);
                 time.Start();
@@ -68,8 +68,9 @@ namespace CMS_ScanningSystem
                 {
                     timer.Stop();
                     DatabaseClass.ScanningMethod(id.Substring(1,id.Length-2), lbRoomName, lbName, lbTime, lbTimeInOrOut);
+                   
                     timerClear = new Timer();
-                    counterClear = 4;
+                    counterClear = 6;
                     timerClear.Interval = 1000;
                     timerClear.Tick += new EventHandler(timerSaveData_Tick);
                     timerClear.Start();
