@@ -25,11 +25,11 @@ public class ViewInformation : MonoBehaviour
     public RoomNumber Room = RoomNumber.None;
     public TMP_Text value;
 
-    string query;
-    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=adminaie";
+    string query,query1,query2;
+    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     SqlConnection con;
-    SqlCommand cmd;
-    SqlDataReader rd;
+    SqlCommand cmd,cmd1,cmd2;
+    SqlDataReader rd,rd1;
     string building,id;
     int count;
     
@@ -107,8 +107,6 @@ public class ViewInformation : MonoBehaviour
 
                 building = rd["BUILDING_NAME"].ToString();
 
-
-
                 query = "SELECT ID FROM INFORMATION";
 
                 cmd = new SqlCommand(query, con);
@@ -120,18 +118,13 @@ public class ViewInformation : MonoBehaviour
                   
                       id =  rd["ID"].ToString();
 
-                    query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '"+building+"' AND ID = '"+id+"'";
+                    query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '"+building+"' AND ID = '"+id+"' AND REMARKS = 'IN'";
 
                     cmd = new SqlCommand(query, con);
                     count = (int)(cmd.ExecuteScalar());
-
-
-                   
-
                 }
-
-
-        }
+                
+            }
 
         }
     }
