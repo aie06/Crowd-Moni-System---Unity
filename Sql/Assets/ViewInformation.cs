@@ -23,12 +23,16 @@ public class ViewInformation : MonoBehaviour
     public BuildingName Building = BuildingName.None;
     public FloorLevel Floor = FloorLevel.None;
     public RoomNumber Room = RoomNumber.None;
+    public TMP_Text value;
 
     string query;
     string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=adminaie";
     SqlConnection con;
     SqlCommand cmd;
     SqlDataReader rd;
+    string building,id;
+    int count;
+    
 
     #region Data Viewer
     public void ViewTableData()
@@ -92,23 +96,43 @@ public class ViewInformation : MonoBehaviour
         if (con.State == ConnectionState.Open)
         {
 
-            query = "SELECT * FROM INFORMATION";
-            Debug.Log(query);
+            query = "SELECT BUILDING_NAME FROM BUILDING_INFO";
+           
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
-            float templateView = 20f;
+          
             while (rd.Read())
             {
-                GameObject obj = Instantiate(dataEntry, attendanceContainer);
-                obj.GetComponent<DataEntry>().Initialize(
-                    rd["ID"].ToString(),
-                    rd["COURSE_AND_YEAR"].ToString(),
-                    rd["LAST_NAME"].ToString(),
-                    rd["FIRST_NAME"].ToString(),
-                    rd["MIDDLE_NAME"].ToString());
-                obj.transform.localScale = Vector3.one;
-            }
+
+                building = rd["BUILDING_NAME"].ToString();
+
+
+
+                query = "SELECT ID FROM INFORMATION";
+
+                cmd = new SqlCommand(query, con);
+                rd = cmd.ExecuteReader();
+
+
+                while (rd.Read())
+                {
+                  
+                      id =  rd["ID"].ToString();
+
+                    query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '"+building+"' AND ID = '"+id+"'";
+
+                    cmd = new SqlCommand(query, con);
+                    count = (int)(cmd.ExecuteScalar());
+
+
+                   
+
+                }
+
+
+        }
+
         }
     }
     public void SetBuilding(TMP_Dropdown building)

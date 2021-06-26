@@ -35,11 +35,15 @@ public class PieGraph : MonoBehaviour
         if (con.State == ConnectionState.Open)
         {
           
-            query = "SELECT * FROM INFORMATION";
+            query = "SELECT ID FROM INFORMATION";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
-            rd.Read();
-            Debug.Log(rd["ID"].ToString());
+            
+
+
+            while (rd.Read()) { 
+            }
+          
 
         }
         float []values= new float[5];
