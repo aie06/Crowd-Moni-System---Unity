@@ -99,7 +99,7 @@ namespace CMS_ScanningSystem.Classes
                         lbTimeInOrOut.ForeColor = Color.Green;
                     }
                     query = "INSERT INTO ATTENDANCE(BUILDING_NAME,FLOOR_NO,ROOM_NO,ID,NAME,COURSE_AND_YEAR,TIME,REMARKS)" +
-                     "VALUES('" + roomdetails[0].ToString() + "','" + roomdetails[1].ToString() + "','" + roomdetails[2].ToString() + "','" + scan + "','" + (dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][1].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
+                     "VALUES('" + roomdetails[0].ToString().Trim() + "','" + roomdetails[1].ToString().Trim() + "','" + roomdetails[2].ToString().Trim() + "','" + scan + "','" + (dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][1].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
                     lbname.Text = dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".";
                     cmd = new SqlCommand(query, serverCon);
                     serverCon.Open();
@@ -112,7 +112,7 @@ namespace CMS_ScanningSystem.Classes
                     lbTimeInOrOut.Text = "TIME IN";
                     lbTimeInOrOut.ForeColor = Color.Green;
                     query = "INSERT INTO ATTENDANCE(BUILDING_NAME,FLOOR_NO,ROOM_NO,ID,NAME,COURSE_AND_YEAR,TIME,REMARKS)" +
-                      "VALUES('" + roomdetails[0].ToString() + "','" + roomdetails[1].ToString() + "','" + roomdetails[2].ToString() + "','" + scan + "','" + (dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][1].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
+                      "VALUES('" + roomdetails[0].ToString().Trim() + "','" + roomdetails[1].ToString().Trim() + "','" + roomdetails[2].ToString().Trim() + "','" + scan + "','" + (dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".") + "','" + dt.Rows[0][1].ToString() + "','" + lbtime.Text + "','" + remarks + "')";
                     lbname.Text = dt.Rows[0][2].ToString() + ", " + dt.Rows[0][3].ToString() + " " + dt.Rows[0][4].ToString().Substring(0, 1) + ".";
                     cmd = new SqlCommand(query, serverCon);
                     serverCon.Open();
