@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,14 +25,14 @@ public class ViewInformation : MonoBehaviour
     public FloorLevel Floor = FloorLevel.None;
     public RoomNumber Room = RoomNumber.None;
     public TMP_Text value;
-
+    ArrayList arr= new ArrayList();
     string query,query1,query2;
     string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     SqlConnection con;
     SqlCommand cmd,cmd1,cmd2;
     SqlDataReader rd,rd1;
-    string building,id;
-    int count;
+    string building,id,temp;
+    int count,cons;
     
 
     #region Data Viewer
@@ -101,29 +102,30 @@ public class ViewInformation : MonoBehaviour
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
-          
-            while (rd.Read())
+
+            while (rd.Read()) // 1 ACADEMIC
             {
 
                 building = rd["BUILDING_NAME"].ToString();
 
-                query = "SELECT ID FROM INFORMATION";
+            query = "SELECT ID FROM INFORMATION";
 
-                cmd = new SqlCommand(query, con);
-                rd = cmd.ExecuteReader();
+            cmd = new SqlCommand(query, con);
+            rd = cmd.ExecuteReader();
 
 
-                while (rd.Read())
+            while (rd.Read()) // 1 0909, 
                 {
-                  
-                      id =  rd["ID"].ToString();
 
-                    query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '"+building+"' AND ID = '"+id+"' AND REMARKS = 'IN'";
+                id = rd["ID"].ToString();
 
-                    cmd = new SqlCommand(query, con);
-                    count = (int)(cmd.ExecuteScalar());
-                }
+                    query = "SELECT COUNT(*) FROM ATTENDANCE WHERE BUILDING_NAME = '"+building+"' AND ID = '"+id+"' AND REMARKS = 'IN'";
                 
+                    cmd = new SqlCommand(query, con);
+                count += (Int32)cmd.ExecuteScalar();
+           
+            }
+                arr.Add(count);
             }
 
         }
