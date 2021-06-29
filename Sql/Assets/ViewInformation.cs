@@ -43,8 +43,7 @@ public class ViewInformation : MonoBehaviour
     {
         ResetViewData();
         con = new SqlConnection(connectionString);
-        //entryTemplate.gameObject.SetActive(false);
-
+       
         con.Open();
         if (con.State == ConnectionState.Open)
         {
@@ -69,12 +68,6 @@ public class ViewInformation : MonoBehaviour
                     rd["FIRST_NAME"].ToString(),
                     rd["MIDDLE_NAME"].ToString());
                 obj.transform.localScale = Vector3.one;
-
-                //entryTransform = Instantiate(entryTemplate, entryContainer);
-                //RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-                //entryRectTransform.anchoredPosition = new Vector2(0, -templateView * update);
-                //entryTransform.gameObject.SetActive(true);
-                //update++;
             }
         }
   
@@ -100,16 +93,11 @@ public class ViewInformation : MonoBehaviour
     {
         ResetAttendanceData();
         con = new SqlConnection(connectionString);
-        //entryTemplate.gameObject.SetActive(false);
-
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-
-            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if(buildingEmpty.text.Equals("All"))
-                query = "SELECT * FROM ATTENDANCE";
-            //Debug.Log(query);
+            query = "SELECT * FROM ATTENDANCE";
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
@@ -125,12 +113,7 @@ public class ViewInformation : MonoBehaviour
             }
         }
     }
-    //public void SetBuilding(TMP_Dropdown building)
-    //{ Building = EnumHelper.GetEnum<BuildingName>(building.value); }
-    //public void SetFloor(TMP_Dropdown floor)
-    //{ Floor = EnumHelper.GetEnum<FloorLevel>(floor.value); }
-    //public void SetRoom(TMP_Dropdown room)
-    //{ Room = EnumHelper.GetEnum<RoomNumber>(room.value); }
+
     public void ResetAttendanceData()
     {
         if (attendanceContainer.childCount > 0)
@@ -217,7 +200,6 @@ public class ViewInformation : MonoBehaviour
         if (con.State == ConnectionState.Open)
         {
 
-            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if (filterBuilding.options[filterBuilding.value].text.Equals("All"))
                 query = "SELECT * FROM ATTENDANCE";
             else
@@ -246,8 +228,6 @@ public class ViewInformation : MonoBehaviour
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-
-            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if (filterFloor.options[filterFloor.value].text.Equals("All"))
             {
                 query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "'";
@@ -279,7 +259,6 @@ public class ViewInformation : MonoBehaviour
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-            //query = "SELECT * FROM INFORMATION "+((Building!=BuildingName.None)?"WHERE "+((Building==BuildingName.None)? "" : "ID=15151515"):"");
             if (filterRoom.options[filterRoom.value].text.Equals("All"))
                 query = "SELECT * FROM ATTENDANCE WHERE BUILDING_NAME = '" + buildingEmpty.text + "' AND FLOOR_NO = '" + floorEmpty.text + "'";
             else

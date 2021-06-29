@@ -14,6 +14,7 @@ public class Script : MonoBehaviour
 {
     public Image img;
     public TMP_InputField id;
+
     public void generateQR()
     {
         QRCodeGenerator qr = new QRCodeGenerator();
@@ -26,17 +27,5 @@ public class Script : MonoBehaviour
         Sprite convert = Sprite.Create(text, new Rect(0,0,text.width,text.height), Vector2.one * .5f);
         img.sprite = convert;
         Debug.Log(BitConverter.ToString(arr));
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

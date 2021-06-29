@@ -71,6 +71,7 @@
     <Compile Include="Assets\DatabaseClass.cs" />
     <Compile Include="Assets\EnumHelper.cs" />
     <Compile Include="Assets\Script.cs" />
+    <Compile Include="Assets\Validations.cs" />
     <Compile Include="Assets\ViewInformation.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
