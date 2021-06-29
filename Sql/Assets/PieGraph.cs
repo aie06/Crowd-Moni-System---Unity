@@ -18,8 +18,9 @@ public class PieGraph : MonoBehaviour
     string query,query1,query2;
     string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     string building, id,cap;
-    int count, capa,bldgcap;
+    int count, capa,bldgcap,white,green,yellow,orange,red;
     float fifty = .5f, seventyfour = .74f;
+    ArrayList colors = new ArrayList();
     ArrayList counts = new ArrayList();
     ArrayList capacity = new ArrayList();
     // Start is called before the first frame update
@@ -29,8 +30,8 @@ public class PieGraph : MonoBehaviour
     }
     public void MakeGraph()
     {
-      
-      
+
+
         //for (int i = 0; i < values.Length; i++)
         //{
         //    total += values[i];
@@ -42,14 +43,14 @@ public class PieGraph : MonoBehaviour
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-            
+
             // Number of People on a building
             query = "SELECT BUILDING_NAME FROM BUILDING_INFO";
 
             cmd = new SqlCommand(query, con);
             rd = cmd.ExecuteReader();
 
-            while (rd.Read()) 
+            while (rd.Read())
             {
 
                 building = rd["BUILDING_NAME"].ToString();
@@ -59,19 +60,20 @@ public class PieGraph : MonoBehaviour
                 rd = cmd.ExecuteReader();
 
 
-                while (rd.Read()) 
+                while (rd.Read())
                 {
 
                     id = rd["ID"].ToString();
 
                     query = "SELECT COUNT(*) FROM ATTENDANCE WHERE BUILDING_NAME = '" + building + "' AND ID = '" + id + "' AND REMARKS = 'IN'";
-                    
+
                     cmd = new SqlCommand(query, con);
                     count += (Int32)cmd.ExecuteScalar();
 
                 }
                 counts.Add(count);
-              
+
+
                 // Capacity of each Building
                 query1 = "SELECT CAPACITY FROM BUILDING_INFO";
 
@@ -85,13 +87,40 @@ public class PieGraph : MonoBehaviour
                     capa = Convert.ToInt32(cap);
                     capacity.Add(capa);
                 }
-               
+            }
+
+
+            for (int i = 0; i < counts.Count; i++)
+            {
+                int capacityOfEachBldg = (Int32)capacity[i];
+                int countsOfStudents = (Int32)counts[i];
+                if (countsOfStudents <= capacityOfEachBldg * fifty)
+                {
+                    green += (int)counts[i];
+
+                }
+                else if (countsOfStudents > capacityOfEachBldg * fifty && countsOfStudents <= seventyfour * capacityOfEachBldg)
+                {
+                    yellow += (int)counts[i];
+
+                }
+                else if (countsOfStudents > seventyfour * capacityOfEachBldg && countsOfStudents <= capacityOfEachBldg)
+                {
+                    orange += (int)counts[i];
+                }
+                else
+                {
+                    red += (int)counts[i];
+                }
 
             }
+            colors.Add(green);
+            colors.Add(yellow);
+            colors.Add(orange);
+            colors.Add(red);
             //Total Capacity of all buildings
-            int total = 0;
-            float zRotation = 0f;
 
+            int total = 0;
             query2 = "SELECT COUNT (*) FROM BUILDING_INFO";
             cmd2 = new SqlCommand(query2, con);
             bldgcap = (Int32)cmd2.ExecuteScalar();
@@ -99,48 +128,33 @@ public class PieGraph : MonoBehaviour
             for (int i = 0; i < bldgcap; i++)
             {
                 total += (int)capacity[i];
-            }
 
+            }
 
             float[] values = new float[5];
             Image newWedge = Instantiate(wedgePrefab) as Image;
             newWedge.transform.SetParent(transform, false);
 
+            float zRotation = 0f;
+
             for (int i = 0; i < counts.Count; i++)
             {
-               int capacityOfEachBldg = (Int32)capacity[i];
-               int countsOfStudents = (Int32)counts[i];
-                if (countsOfStudents <= capacityOfEachBldg * fifty)
-                {
-                    values[i] = countsOfStudents;
-                    newWedge.color = wedgeColors[2];
-                    newWedge.fillAmount = values[i] / total;
-                    newWedge.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, zRotation));
-                    zRotation -= newWedge.fillAmount * 360f;
-                }
+                //int capacityOfEachBldg = (Int32)capacity[i];
+                //int countsOfStudents = (Int32)counts[i];
+                //if (countsOfStudents <= capacityOfEachBldg * fifty)
+                //{
+
+                values[0] = (int)colors[i];
+                newWedge.color = wedgeColors[0];
+                newWedge.fillAmount = values[0] / total;
+                newWedge.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, zRotation));
+                zRotation -= newWedge.fillAmount * 360f;
+                //}
+
+
+                Debug.Log(green);
             }
 
         }
-
-
-
-      
-        //for (int i = 0; i < values.Length; i++) {
-        //    values[i] = i;
-        //    total += i;
-        //}
-
-        //for (int i = 0; i < values.Length; i++)
-        //{
-         
-        //    newWedge.color = wedgeColors[i];
-        //    newWedge.fillAmount = values[i] / total;
-        //    newWedge.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, zRotation));
-        //    zRotation -= newWedge.fillAmount * 360f;
-
-        //}
-
-
-
-    }
+    }   
 }
