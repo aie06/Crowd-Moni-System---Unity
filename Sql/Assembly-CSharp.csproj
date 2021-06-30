@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AddQRGenToClass.cs" />
+    <Compile Include="Assets\CameraControl.cs" />
     <Compile Include="Assets\DataConverter.cs" />
     <Compile Include="Assets\DataEntry.cs" />
     <Compile Include="Assets\DataEntryAttendance.cs" />

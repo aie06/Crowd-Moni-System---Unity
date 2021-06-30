@@ -23,6 +23,9 @@ public class PieGraph : MonoBehaviour
     ArrayList colors = new ArrayList();
     ArrayList counts = new ArrayList();
     ArrayList capacity = new ArrayList();
+
+    public SpriteRenderer[] bldgs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +63,6 @@ public class PieGraph : MonoBehaviour
                 cmd = new SqlCommand(query, con);
                 rd = cmd.ExecuteReader();
 
-
                 while (rd.Read())
                 {
 
@@ -90,7 +92,7 @@ public class PieGraph : MonoBehaviour
                 }
             }
 
-
+            //TODO: EDIT (SABE NI CHA)
             for (int i = 0; i < counts.Count; i++)
             {
                 int capacityOfEachBldg = (Int32)capacity[i];
@@ -98,20 +100,24 @@ public class PieGraph : MonoBehaviour
                 if (countsOfStudents <= capacityOfEachBldg * fifty)
                 {
                     green += (int)counts[i];
-
+                    bldgs[i].color = wedgeColors[0];
                 }
                 else if (countsOfStudents > capacityOfEachBldg * fifty && countsOfStudents <= seventyfour * capacityOfEachBldg)
                 {
                     yellow += (int)counts[i];
+                    bldgs[i].color = wedgeColors[1];
 
                 }
                 else if (countsOfStudents > seventyfour * capacityOfEachBldg && countsOfStudents <= capacityOfEachBldg)
                 {
+
                     orange += (int)counts[i];
+                    bldgs[i].color = wedgeColors[2];
                 }
                 else
                 {
                     red += (int)counts[i];
+                    bldgs[i].color = wedgeColors[3];
                 }
 
             }
@@ -152,10 +158,8 @@ public class PieGraph : MonoBehaviour
                 zRotation -= newWedge.fillAmount * 360f;
                 //}
 
-
-                Debug.Log(green);
             }
-
+           
         }
     }
 }
