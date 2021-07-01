@@ -19422,7 +19422,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a1867b2fb69124c9b81c6920e98fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  values: []
+  values:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   wedgeColors:
   - {r: 0.039215688, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.9490196, b: 0, a: 1}
@@ -19431,7 +19436,4 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   wedgePrefab: {fileID: 8388033264344207108, guid: 2d23b48bacf7b2843b044834ac3ffcc5,
     type: 3}
-  bldgs:
-  - {fileID: 1349475535}
-  - {fileID: 1065212584}
-  - {fileID: 1443478681}
+  bldgs: []
