@@ -54,7 +54,7 @@
             this.LeftContainer.Controls.Add(this.LeftContainerBottom);
             this.LeftContainer.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftContainer.Location = new System.Drawing.Point(0, 0);
-            this.LeftContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LeftContainer.Margin = new System.Windows.Forms.Padding(2);
             this.LeftContainer.Name = "LeftContainer";
             this.LeftContainer.Size = new System.Drawing.Size(133, 600);
             this.LeftContainer.TabIndex = 0;
@@ -64,7 +64,7 @@
             this.LeftContainerBottom.Controls.Add(this.btnRoom);
             this.LeftContainerBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.LeftContainerBottom.Location = new System.Drawing.Point(0, 520);
-            this.LeftContainerBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LeftContainerBottom.Margin = new System.Windows.Forms.Padding(2);
             this.LeftContainerBottom.Name = "LeftContainerBottom";
             this.LeftContainerBottom.Size = new System.Drawing.Size(133, 80);
             this.LeftContainerBottom.TabIndex = 1;
@@ -79,7 +79,7 @@
             this.btnRoom.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoom.ForeColor = System.Drawing.Color.White;
             this.btnRoom.Location = new System.Drawing.Point(8, 9);
-            this.btnRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRoom.Margin = new System.Windows.Forms.Padding(2);
             this.btnRoom.Name = "btnRoom";
             this.btnRoom.Size = new System.Drawing.Size(121, 63);
             this.btnRoom.TabIndex = 1;
@@ -92,7 +92,7 @@
             this.RightContainer.BackColor = System.Drawing.Color.Transparent;
             this.RightContainer.Dock = System.Windows.Forms.DockStyle.Right;
             this.RightContainer.Location = new System.Drawing.Point(667, 0);
-            this.RightContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RightContainer.Margin = new System.Windows.Forms.Padding(2);
             this.RightContainer.Name = "RightContainer";
             this.RightContainer.Size = new System.Drawing.Size(133, 600);
             this.RightContainer.TabIndex = 1;
@@ -104,7 +104,7 @@
             this.TopContainer.Controls.Add(this.txtScan);
             this.TopContainer.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopContainer.Location = new System.Drawing.Point(133, 0);
-            this.TopContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TopContainer.Margin = new System.Windows.Forms.Padding(2);
             this.TopContainer.Name = "TopContainer";
             this.TopContainer.Size = new System.Drawing.Size(534, 167);
             this.TopContainer.TabIndex = 2;
@@ -129,7 +129,7 @@
             this.txtScan.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScan.ForeColor = System.Drawing.Color.White;
             this.txtScan.Location = new System.Drawing.Point(0, 127);
-            this.txtScan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtScan.Margin = new System.Windows.Forms.Padding(2);
             this.txtScan.Name = "txtScan";
             this.txtScan.PasswordChar = '*';
             this.txtScan.Size = new System.Drawing.Size(534, 40);
@@ -145,7 +145,7 @@
             this.CenterContainer.Controls.Add(this.lbName);
             this.CenterContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CenterContainer.Location = new System.Drawing.Point(133, 167);
-            this.CenterContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CenterContainer.Margin = new System.Windows.Forms.Padding(2);
             this.CenterContainer.Name = "CenterContainer";
             this.CenterContainer.Size = new System.Drawing.Size(534, 433);
             this.CenterContainer.TabIndex = 3;
@@ -207,7 +207,7 @@
             this.Controls.Add(this.RightContainer);
             this.Controls.Add(this.LeftContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ScanningSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

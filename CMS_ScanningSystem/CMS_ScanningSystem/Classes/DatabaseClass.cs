@@ -14,8 +14,8 @@ namespace CMS_ScanningSystem.Classes
     class DatabaseClass
     {
 
-        static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Client-System\CMS_ScanningSystem\CMS_ScanningSystem\Room_Database.mdf;Integrated Security=True");
-        static SqlConnection serverCon = new SqlConnection(@"Data Source=CHA_ROLD,1433;Initial Catalog=CROWD_MONITORING_SYSTEM;User ID=sa;Password=cha08");
+        static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\Room_Database.mdf;Integrated Security=True");
+        static SqlConnection serverCon = new SqlConnection(@"Data Source=CHA_ROLD;Initial Catalog=CROWD_MONITORING_SYSTEM;User ID=sa;Password=cha08");
         static SqlCommand cmd;
         static SqlDataAdapter sda, innersda;
         static DataTable dt,innerdt;
@@ -81,7 +81,7 @@ namespace CMS_ScanningSystem.Classes
             {
                 lbtime.Text = DateTime.Now.ToString("hh:mm tt");
                 string[] roomdetails = lbroomdetails.Text.Split('-');
-                innersda = new SqlDataAdapter("SELECT ID FROM ATTENDANCE WHERE ID ='" + scan + "' AND BUILDING_NAME = '" + roomdetails[0].ToString() + "' AND FLOOR_NO = '" + roomdetails[1].ToString() + "' AND ROOM_NO = '" + roomdetails[2].ToString() + "'", serverCon);
+                innersda = new SqlDataAdapter("SELECT ID FROM ATTENDANCE WHERE ID ='" + scan + "' AND BUILDING_NAME = '" + roomdetails[0].ToString().Trim() + "' AND FLOOR_NO = '" + roomdetails[1].ToString().Trim() + "' AND ROOM_NO = '" + roomdetails[2].ToString().Trim() + "'", serverCon);
                 innerdt = new DataTable();
                 innersda.Fill(innerdt);
                 if (innerdt.Rows.Count > 0)
@@ -119,13 +119,14 @@ namespace CMS_ScanningSystem.Classes
                     cmd.ExecuteNonQuery();
                     serverCon.Close();
                 }
-
             }
-            else
+            else if(dt.Rows.Count == 0)
             {
+                MessageBox.Show(dt.Rows.Count.ToString());
                 lbTimeInOrOut.Text = "The QR Code is not registered. Please proceed to the authorized person to registered it.";
                 lbTimeInOrOut.ForeColor = Color.Red;
             }
+          
         }
         // -------------------------------------------------------------------
     }
