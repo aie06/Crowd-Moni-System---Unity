@@ -120,7 +120,7 @@ namespace CMS_ScanningSystem.Classes
                     serverCon.Close();
                 }
             }
-            else if(dt.Rows.Count == 0)
+            else if(dt.Rows.Count == 0 && lbname.Text == "")
             {
                 MessageBox.Show(dt.Rows.Count.ToString());
                 lbTimeInOrOut.Text = "The QR Code is not registered. Please proceed to the authorized person to registered it.";
