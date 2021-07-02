@@ -33,7 +33,7 @@ public class ViewInformation : MonoBehaviour
     public RoomNumber Room = RoomNumber.None;
 
     string query;
-    string connectionString = @"Data Source=CHA_ROLD,1433;Initial Catalog=CROWD_MONITORING_SYSTEM;User ID=sa;Password=cha08";
+    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     SqlConnection con;
     SqlCommand cmd;
     SqlDataReader rd;

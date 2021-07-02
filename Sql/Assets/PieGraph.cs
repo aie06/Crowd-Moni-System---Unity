@@ -13,9 +13,10 @@ public class PieGraph : MonoBehaviour
     public Color[] wedgeColors;
     public Image wedgePrefab;
     SqlConnection con;
-    SqlCommand cmd, cmd1, cmd2, cmd3;
+    SqlCommand cmd, cmd1, cmd2, cmd3,cmd4;
     SqlDataReader rd, rd1, rd2;
-    string query, query1, query2, query3, query4;
+    string query, query1, query2, query3, query4,query5,tempo;
+    DateTime oDate;
     string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     string building, id, cap;
     int count, capa, bldgcap, white, green, yellow, orange, red;
@@ -49,7 +50,6 @@ public class PieGraph : MonoBehaviour
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-
             // Number of People on a building
             query = "SELECT BUILDING_NAME FROM BUILDING_INFO";
 
@@ -71,8 +71,11 @@ public class PieGraph : MonoBehaviour
                     id = rd2["ID"].ToString();
 
                     query4 = "SELECT COUNT(*) FROM ATTENDANCE WHERE BUILDING_NAME = '" + building + "' AND ID = '" + id + "' AND REMARKS = 'IN'";
-                    
+                    query5 = "SELECT TIME FROM ATTENDANCE WHERE BUILDING_NAME  = 'AGRI_BUSINESS' AND ID = '02000043329' AND REMARKS = 'IN'";
                     cmd3 = new SqlCommand(query4, con);
+                    cmd4 = new SqlCommand(query5,con);
+                    tempo = (string)cmd4.ExecuteScalar();
+                 
                     container = (Int32)cmd3.ExecuteScalar();
                     if (container > 1)
                     {
@@ -83,13 +86,10 @@ public class PieGraph : MonoBehaviour
                     {
                         count += (Int32)cmd3.ExecuteScalar();
                     }
-                  
-                }
-               
+                }            
                 counts.Add(count);
                 buildings.Add(building);
                 count = 0;
-
             }
             for (int i = 0; i < counts.Count; i++) 
             temp += (int)counts[i];
@@ -176,7 +176,7 @@ public class PieGraph : MonoBehaviour
             }
 
 
-
+            Debug.Log(tempo);
             Debug.Log(container);
             Debug.Log(counts[0]);
             Debug.Log(counts[1]);
