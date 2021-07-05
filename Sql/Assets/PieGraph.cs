@@ -15,11 +15,11 @@ public class PieGraph : MonoBehaviour
     SqlConnection con;
     SqlCommand cmd, cmd1, cmd2, cmd3,cmd4;
     SqlDataReader rd, rd1, rd2;
-    string query, query1, query2, query3, query4,query5,tempo;
+    string query, query1, query2, query3, query4;
     DateTime oDate;
     string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     string building, id, cap;
-    int count, capa, bldgcap, white, green, yellow, orange, red;
+    int count, capa, bldgcap, white, green, yellow, orange, red,capacityOfEachBldg,countsOfStudents;
     float fifty = .5f, seventyfour = .74f;
     ArrayList colors = new ArrayList();
     ArrayList counts = new ArrayList();
@@ -32,12 +32,13 @@ public class PieGraph : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MakeGraph();
+        Graphbldg();
     }
 
-    public void MakeGraph()
+    public void Graphbldg()
     {
-
+        float zRotation = 0f;
+        values = new float[5];
 
         //for (int i = 0; i < values.Length; i++)
         //{
@@ -71,21 +72,10 @@ public class PieGraph : MonoBehaviour
                     id = rd2["ID"].ToString();
 
                     query4 = "SELECT COUNT(*) FROM ATTENDANCE WHERE BUILDING_NAME = '" + building + "' AND ID = '" + id + "' AND REMARKS = 'IN'";
-                    query5 = "SELECT TIME FROM ATTENDANCE WHERE BUILDING_NAME  = 'AGRI_BUSINESS' AND ID = '02000043329' AND REMARKS = 'IN'";
+                  
                     cmd3 = new SqlCommand(query4, con);
-                    cmd4 = new SqlCommand(query5,con);
-                    tempo = (string)cmd4.ExecuteScalar();
-                 
-                    container = (Int32)cmd3.ExecuteScalar();
-                    if (container > 1)
-                    {
-                        container = 1;
-                        count += container;
-                    }
-                    else
-                    {
                         count += (Int32)cmd3.ExecuteScalar();
-                    }
+                    
                 }            
                 counts.Add(count);
                 buildings.Add(building);
@@ -109,30 +99,35 @@ public class PieGraph : MonoBehaviour
             //TODO: EDIT (SABE NI CHA)
             for (int i = 0; i < counts.Count; i++)
             {
-                int capacityOfEachBldg = (Int32)capacity[i];
-                int countsOfStudents = (Int32)counts[i];
-                if (countsOfStudents <= capacityOfEachBldg * fifty)
+               capacityOfEachBldg = (Int32)capacity[i];
+               countsOfStudents = (Int32)counts[i];
+                if (countsOfStudents <= capacityOfEachBldg * fifty && countsOfStudents>0)
                 {
                     green += (int)counts[i];
+                    values[0] += green;
                     bldgs[i].color = wedgeColors[0];
                 }
                 else if (countsOfStudents > capacityOfEachBldg * fifty && countsOfStudents <= seventyfour * capacityOfEachBldg)
                 {
                     yellow += (int)counts[i];
+                    values[1] += yellow;
                     bldgs[i].color = wedgeColors[1];
                 }
                 else if (countsOfStudents > seventyfour * capacityOfEachBldg && countsOfStudents <= capacityOfEachBldg)
                 {
                     orange += (int)counts[i];
+                    values[2] += orange;
                     bldgs[i].color = wedgeColors[2];
                 }
                 else if (countsOfStudents > capacityOfEachBldg)
                 {
                     red += (int)counts[i];
+                    values[3] += red;
                     bldgs[i].color = wedgeColors[3];
                 }
                 else {
                     white = 0;
+                    values[4] += white;
                     bldgs[i].color = wedgeColors[4];
                 }
 
@@ -155,14 +150,13 @@ public class PieGraph : MonoBehaviour
 
             }
 
-            float zRotation = 0f;
-            values = new float[5];
+         
 
-            for (int i = 0; i < values.Length; i++)
+            //for (int i = 0; i < values.Length; i++)
 
-            {
-                values[i] = (int)colors[i];
-            }
+            //{ 
+            //        values[i] = (int)colors[i];
+            //}
 
             for (int i = 0; i < values.Length; i++)
             {
@@ -176,7 +170,7 @@ public class PieGraph : MonoBehaviour
             }
 
 
-            Debug.Log(tempo);
+           
             Debug.Log(container);
             Debug.Log(counts[0]);
             Debug.Log(counts[1]);
@@ -193,6 +187,34 @@ public class PieGraph : MonoBehaviour
             //int capacityOfEachBldg = (Int32)capacity[i];
             //int countsOfStudents = (Int32)counts[i];
             //if (countsOfStudents <= capacityOfEachBldg * fifty)
+        }
+    }
+
+    public void GraphFloor() {
+        query = "SELECT BUILDING_NAME FROM BUILDING_INFO";
+        cmd = new SqlCommand(query, con);
+        rd = cmd.ExecuteReader();
+        {
+            building = rd["BUILDING_NAME"].ToString();
+
+            query3 = "SELECT ID FROM INFORMATION";
+            cmd3 = new SqlCommand(query3, con);
+            rd2 = cmd3.ExecuteReader();
+
+            while (rd2.Read())
+            {
+
+                id = rd2["ID"].ToString();
+
+                query4 = "SELECT COUNT(*) FROM ATTENDANCE WHERE BUILDING_NAME = '" + building + "' AND ID = '" + id + "' AND REMARKS = 'IN'";
+
+                cmd3 = new SqlCommand(query4, con);
+                count += (Int32)cmd3.ExecuteScalar();
+
+            }
+            counts.Add(count);
+            buildings.Add(building);
+            count = 0;
         }
     }
 }
