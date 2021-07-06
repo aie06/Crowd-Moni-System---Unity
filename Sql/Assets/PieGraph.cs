@@ -37,13 +37,31 @@ public class PieGraph : MonoBehaviour
 
     public void Graphbldg()
     {
+        counts = new ArrayList();
+        buildings = new ArrayList();
+        capacity = new ArrayList();
+        green = 0; yellow = 0; orange = 0; red = 0;white = 0; 
+        
+        if (transform.childCount > 0)
+        {
+            Transform[] con = new Transform[transform.childCount];
+            for (int i = 0; i < con.Length; i++)
+            {
+                con[i] = transform.GetChild(i);
+            }
+            for (int i = 0; i < con.Length; i++)
+            {
+                Destroy(con[i].gameObject);
+            }
+        }
         float zRotation = 0f;
         values = new float[5];
 
-        //for (int i = 0; i < values.Length; i++)
-        //{
-        //    total += values[i];
-        //}
+
+        for (int i = 0; i < values.Length; i++)
+        {
+            values[i]=0;
+        }
 
         con = new SqlConnection(connectionString);
         //entryTemplate.gameObject.SetActive(false);
@@ -81,6 +99,7 @@ public class PieGraph : MonoBehaviour
                 buildings.Add(building);
                 count = 0;
             }
+            
             for (int i = 0; i < counts.Count; i++) 
             temp += (int)counts[i];
             // Capacity of each Building
@@ -101,43 +120,38 @@ public class PieGraph : MonoBehaviour
             {
                capacityOfEachBldg = (Int32)capacity[i];
                countsOfStudents = (Int32)counts[i];
-                if (countsOfStudents <= capacityOfEachBldg * fifty && countsOfStudents>0)
+                if (countsOfStudents <= (capacityOfEachBldg * fifty) && countsOfStudents > 0)
                 {
-                    green += (int)counts[i];
+                    green = (int)counts[i];
                     values[0] += green;
                     bldgs[i].color = wedgeColors[0];
                 }
-                else if (countsOfStudents > capacityOfEachBldg * fifty && countsOfStudents <= seventyfour * capacityOfEachBldg)
+                else if (countsOfStudents > (capacityOfEachBldg * fifty) && countsOfStudents <= (seventyfour * capacityOfEachBldg))
                 {
-                    yellow += (int)counts[i];
+                    yellow = (int)counts[i];
                     values[1] += yellow;
                     bldgs[i].color = wedgeColors[1];
                 }
-                else if (countsOfStudents > seventyfour * capacityOfEachBldg && countsOfStudents <= capacityOfEachBldg)
+                else if (countsOfStudents > (seventyfour * capacityOfEachBldg) && countsOfStudents <= capacityOfEachBldg)
                 {
-                    orange += (int)counts[i];
+                    orange = (int)counts[i];
                     values[2] += orange;
                     bldgs[i].color = wedgeColors[2];
                 }
                 else if (countsOfStudents > capacityOfEachBldg)
                 {
-                    red += (int)counts[i];
+                    red = (int)counts[i];
                     values[3] += red;
                     bldgs[i].color = wedgeColors[3];
                 }
                 else {
-                    white = 0;
-                    values[4] += white;
+                   
+                    values[4] = capacityOfEachBldg;
                     bldgs[i].color = wedgeColors[4];
                 }
 
             }
-            colors.Add(green);
-            colors.Add(yellow);
-            colors.Add(orange);
-            colors.Add(red);
-            colors.Add(white);
-            //Total Capacity of all buildings
+          
 
             int total = 0;
             query2 = "SELECT COUNT (*) FROM BUILDING_INFO";
@@ -150,71 +164,16 @@ public class PieGraph : MonoBehaviour
 
             }
 
-         
-
-            //for (int i = 0; i < values.Length; i++)
-
-            //{ 
-            //        values[i] = (int)colors[i];
-            //}
-
             for (int i = 0; i < values.Length; i++)
             {
-
                 Image newWedge = Instantiate(wedgePrefab) as Image;
                 newWedge.transform.SetParent(transform, false);
                 newWedge.color = wedgeColors[i];
-                newWedge.fillAmount = values[i] / temp;
+                newWedge.fillAmount = values[i] / total;
                 newWedge.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, zRotation));
                 zRotation -= newWedge.fillAmount * 360f;
             }
-
-
-           
-            Debug.Log(container);
-            Debug.Log(counts[0]);
-            Debug.Log(counts[1]);
-            Debug.Log(counts[2]);
-
-
-            Debug.Log(total);
-
-
-            //colors.Add(green);
-            //colors.Add(yellow);
-            //colors.Add(orange);
-            //colors.Add(red);
-            //int capacityOfEachBldg = (Int32)capacity[i];
-            //int countsOfStudents = (Int32)counts[i];
-            //if (countsOfStudents <= capacityOfEachBldg * fifty)
-        }
-    }
-
-    public void GraphFloor() {
-        query = "SELECT BUILDING_NAME FROM BUILDING_INFO";
-        cmd = new SqlCommand(query, con);
-        rd = cmd.ExecuteReader();
-        {
-            building = rd["BUILDING_NAME"].ToString();
-
-            query3 = "SELECT ID FROM INFORMATION";
-            cmd3 = new SqlCommand(query3, con);
-            rd2 = cmd3.ExecuteReader();
-
-            while (rd2.Read())
-            {
-
-                id = rd2["ID"].ToString();
-
-                query4 = "SELECT COUNT(*) FROM ATTENDANCE WHERE BUILDING_NAME = '" + building + "' AND ID = '" + id + "' AND REMARKS = 'IN'";
-
-                cmd3 = new SqlCommand(query4, con);
-                count += (Int32)cmd3.ExecuteScalar();
-
-            }
-            counts.Add(count);
-            buildings.Add(building);
-            count = 0;
+         
         }
     }
 }
