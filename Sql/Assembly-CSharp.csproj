@@ -72,6 +72,7 @@
     <Compile Include="Assets\DatabaseClass.cs" />
     <Compile Include="Assets\EnumHelper.cs" />
     <Compile Include="Assets\PieGraph.cs" />
+    <Compile Include="Assets\Rooms.cs" />
     <Compile Include="Assets\Sample.cs" />
     <Compile Include="Assets\Script.cs" />
     <Compile Include="Assets\Validations.cs" />

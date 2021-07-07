@@ -12,6 +12,7 @@ public class Sample : MonoBehaviour
 
 
     SqlConnection con;
+    bool c;
     SqlCommand cmd, cmd1, cmd2, cmd3, cmd4, cmdf, cmdID;
     SqlDataReader rd, rd1, rd2, rdf, rdID;
     string query, query1, query2, query3, query4, queryf, queryID;
@@ -30,6 +31,7 @@ public class Sample : MonoBehaviour
 
     public GameObject build;
     public GameObject eachbldg;
+    public GameObject rooms;
     public PieGraph graph;
 
     string bldg;
@@ -37,6 +39,7 @@ public class Sample : MonoBehaviour
     {
         build.gameObject.SetActive(true);
         eachbldg.gameObject.SetActive(true);
+        bldg = eachbldg.ToString();
         counts = new ArrayList();
         buildings = new ArrayList();
         capacity = new ArrayList();
@@ -61,8 +64,13 @@ public class Sample : MonoBehaviour
             graph.values[i] = 0;
 
         }
+    
+        Graph(bldg);
+    }
+    public void Graph(string ICT) {
+        
+         Debug.Log("TAMA KA");
         con = new SqlConnection(connectionString);
-
         con.Open();
         if (con.State == ConnectionState.Open)
         {
@@ -75,7 +83,7 @@ public class Sample : MonoBehaviour
             //while (rd.Read())
             //{
 
-            building = /*rd["BUILDING_NAME"].ToString();*/ "ICT";
+            building = eachbldg.name;
 
             query3 = "SELECT FLOOR_NO FROM FLOOR_INFO WHERE BUILDING_NAME = '" + building + "'";
             cmd3 = new SqlCommand(query3, con);
@@ -111,6 +119,7 @@ public class Sample : MonoBehaviour
                     {
                         counts.Add(count);
                         count = 0;
+                      
                     }
                 }
 
@@ -135,11 +144,7 @@ public class Sample : MonoBehaviour
                 capacity.Add(capa);
             }
 
-
-
-       
-
-            //TODO: EDIT(SABE NI CHA)
+            //GRAPH
             for (int i = 0; i < counts.Count; i++)
             {
                 capacityOfEachRoom = (int)capacity[i];
@@ -148,6 +153,7 @@ public class Sample : MonoBehaviour
                 {
                     green = (int)counts[i];
                     graph.values[0] += green;
+                    
                 }
                 else if (countsOfStudents > (capacityOfEachRoom * fifty) && countsOfStudents <= (seventyfour * capacityOfEachRoom))
                 {
@@ -171,9 +177,6 @@ public class Sample : MonoBehaviour
                 }
             }
 
-
-
-
             int total = 0;
             query2 = "SELECT COUNT (*) FROM  ROOM_INFO WHERE BUILDING_NAME = '" + building + "'";
             cmd2 = new SqlCommand(query2, con);
@@ -183,7 +186,7 @@ public class Sample : MonoBehaviour
             {
                 total += (int)capacity[i];
             }
-         
+
 
             float zRotation = 0f;
             for (int i = 0; i < graph.values.Length; i++)
@@ -196,18 +199,21 @@ public class Sample : MonoBehaviour
                 zRotation -= newWedge.fillAmount * 360f;
             }
 
-            Debug.Log(graph.values[1]);
-            Debug.Log(graph.values.Length);
-            Debug.Log(total);
+            Debug.Log(counts[1]);
+            Debug.Log(counts[0]);
+            Debug.Log(counts.Count);
+            Debug.Log(graph.values[0]);
+            Debug.Log(graph.values[2]);
 
 
+
+
+            //Debug.Log(graph.values.Length);
+            //Debug.Log(total);
         }
 
 
     }
 }
-
-
-
 
 

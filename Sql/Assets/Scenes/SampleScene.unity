@@ -1742,7 +1742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &154586224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2323,7 +2323,7 @@ GameObject:
   - component: {fileID: 269892249}
   - component: {fileID: 269892248}
   m_Layer: 5
-  m_Name: Library
+  m_Name: LIBRARY
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10255,6 +10255,7 @@ MonoBehaviour:
   bldgs: []
   build: {fileID: 154586223}
   eachbldg: {fileID: 269892246}
+  rooms: {fileID: 0}
   graph: {fileID: 2137997118}
 --- !u!61 &1065212586
 BoxCollider2D:
@@ -13307,6 +13308,7 @@ MonoBehaviour:
   bldgs: []
   build: {fileID: 154586223}
   eachbldg: {fileID: 2098402255}
+  rooms: {fileID: 154586223}
   graph: {fileID: 2137997118}
 --- !u!1 &1372242356
 GameObject:
@@ -14099,6 +14101,7 @@ MonoBehaviour:
   bldgs: []
   build: {fileID: 154586223}
   eachbldg: {fileID: 1715038286}
+  rooms: {fileID: 0}
   graph: {fileID: 2137997118}
 --- !u!61 &1443478683
 BoxCollider2D:
@@ -16829,7 +16832,7 @@ GameObject:
   - component: {fileID: 1715038289}
   - component: {fileID: 1715038288}
   m_Layer: 5
-  m_Name: Agri Business
+  m_Name: AGRI_BUSINESS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21865,7 +21868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2098402256
 RectTransform:
   m_ObjectHideFlags: 0
