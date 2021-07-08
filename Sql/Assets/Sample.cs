@@ -24,6 +24,8 @@ public class Sample : MonoBehaviour
     ArrayList counts = new ArrayList();
     ArrayList capacity = new ArrayList();
     ArrayList buildings = new ArrayList();
+    ArrayList rms = new ArrayList();
+    
 
     // Start is called before the first frame update
 
@@ -33,8 +35,12 @@ public class Sample : MonoBehaviour
     public GameObject eachbldg;
     public GameObject rooms;
     public PieGraph graph;
-
     string bldg;
+    Rooms r;
+     void Start()
+    {
+        r = GetComponent<Rooms>();
+    }
     public void OnMouseDown()
     {
         build.gameObject.SetActive(true);
@@ -44,6 +50,7 @@ public class Sample : MonoBehaviour
         buildings = new ArrayList();
         capacity = new ArrayList();
         green = 0; yellow = 0; orange = 0; red = 0; white = 0;
+
         if (graph.transform.childCount > 0)
         {
             Transform[] con = new Transform[graph.transform.childCount];
@@ -117,9 +124,9 @@ public class Sample : MonoBehaviour
                     }
                     if (count > 0)
                     {
+                        rms.Add(room);
                         counts.Add(count);
                         count = 0;
-                      
                     }
                 }
 
@@ -199,18 +206,48 @@ public class Sample : MonoBehaviour
                 zRotation -= newWedge.fillAmount * 360f;
             }
 
-            Debug.Log(counts[1]);
-            Debug.Log(counts[0]);
-            Debug.Log(counts.Count);
-            Debug.Log(graph.values[0]);
-            Debug.Log(graph.values[2]);
+
+            for (int i = 0; i < counts.Count; i++)
+            {
+                for (int y = 0; y < r.MyImage.Length; y++)
+                {
+                    if (r.MyImage[y].name.Equals(rms[i].ToString()))
+                    {
+                        if (countsOfStudents <= (capacityOfEachRoom * fifty) && countsOfStudents > 0)
+                        {
+                            r.MyImage[y].color = graph.wedgeColors[0];
+                        }
+                        else if (countsOfStudents > (capacityOfEachRoom * fifty) && countsOfStudents <= (seventyfour * capacityOfEachRoom)) {
+                            r.MyImage[y].color = graph.wedgeColors[1];
+                        }
+                        else if (countsOfStudents > (seventyfour * capacityOfEachRoom) && countsOfStudents <= capacityOfEachRoom)
+                        {
+                            r.MyImage[y].color = graph.wedgeColors[2];
+                        }
+                        else if (countsOfStudents > capacityOfEachRoom)
+                        {
+                            r.MyImage[y].color = graph.wedgeColors[3];
+                        }
+                        else
+                        {
+                            r.MyImage[y].color = graph.wedgeColors[4];
+
+                        }
+                    }
+                }
+            }
+
+            //if (r.MyImage[0].name.Equals(rms[0].ToString()))
+            //    Debug.Log("THIS IS ROOM 1");
+            //else
+            //    Debug.Log("LEFT");
 
 
 
 
-            //Debug.Log(graph.values.Length);
-            //Debug.Log(total);
+
         }
+
 
 
     }
