@@ -283,6 +283,12 @@
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="I18N">
+      <HintPath>D:/Crowd-Moni-System---Unity/Sql/Assets/Packages/I18N.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+      <HintPath>D:/Crowd-Moni-System---Unity/Sql/Assets/Packages/I18N.West.dll</HintPath>
+    </Reference>
     <Reference Include="QRCoder">
       <HintPath>D:/Crowd-Moni-System---Unity/Sql/Assets/Packages/QRCoder.1.3.4/lib/netstandard2.0/QRCoder.dll</HintPath>
     </Reference>
@@ -668,7 +674,16 @@
       <HintPath>D:/Crowd-Moni-System---Unity/Sql/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="IngameDebugConsole.Runtime.csproj">
+      <Project>{43BE0037-FF4D-C2C6-EDAE-C39BD9FBB4D0}</Project>
+      <Name>IngameDebugConsole.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="IngameDebugConsole.Editor.csproj">
+      <Project>{12CD56D3-9779-0D85-88B7-479340B7A325}</Project>
+      <Name>IngameDebugConsole.Editor</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

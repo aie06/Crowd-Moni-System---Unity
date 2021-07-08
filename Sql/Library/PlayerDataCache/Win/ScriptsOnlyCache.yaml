@@ -10,6 +10,13 @@ ScriptsOnlyBuild:
     - Sample
     - Validations
     - ViewInformation
+    IngameDebugConsole.Runtime.dll:
+    - IngameDebugConsole.DebugLogItem
+    - IngameDebugConsole.DebugLogManager
+    - IngameDebugConsole.DebugLogPopup
+    - IngameDebugConsole.DebugLogRecycledListView
+    - IngameDebugConsole.DebugLogResizeListener
+    - IngameDebugConsole.DebugsOnScrollListener
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -25,7 +32,9 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.BaseInput
     - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.EventTrigger
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -33,6 +42,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
+    - UnityEngine.UI.InputField
     - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.Mask
     - UnityEngine.UI.RectMask2D
@@ -66,69 +76,87 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11262}
+      Script: {instanceID: 11270}
     - Class: 114
-      Script: {instanceID: 11264}
+      Script: {instanceID: 11272}
+    - Class: 114
+      Script: {instanceID: 11274}
     - Class: 114
       Script: {instanceID: 11276}
     - Class: 114
-      Script: {instanceID: 11286}
+      Script: {instanceID: 11288}
     - Class: 114
-      Script: {instanceID: 11330}
+      Script: {instanceID: 11298}
     - Class: 114
-      Script: {instanceID: 11444}
+      Script: {instanceID: 11344}
     - Class: 114
-      Script: {instanceID: 11446}
+      Script: {instanceID: 11462}
     - Class: 114
-      Script: {instanceID: 11506}
+      Script: {instanceID: 11522}
     - Class: 114
-      Script: {instanceID: 11598}
+      Script: {instanceID: 11614}
     - Class: 114
-      Script: {instanceID: 11682}
+      Script: {instanceID: 11700}
     - Class: 114
-      Script: {instanceID: 11782}
+      Script: {instanceID: 11800}
     - Class: 114
-      Script: {instanceID: 11824}
+      Script: {instanceID: 11842}
     - Class: 114
-      Script: {instanceID: 11850}
+      Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 11876}
+      Script: {instanceID: 11894}
     - Class: 114
-      Script: {instanceID: 11902}
+      Script: {instanceID: 11920}
     - Class: 114
-      Script: {instanceID: 12070}
+      Script: {instanceID: 12094}
     - Class: 114
-      Script: {instanceID: 12180}
+      Script: {instanceID: 12164}
     - Class: 114
-      Script: {instanceID: 12208}
+      Script: {instanceID: 12206}
     - Class: 114
-      Script: {instanceID: 12270}
+      Script: {instanceID: 12212}
     - Class: 114
-      Script: {instanceID: 12362}
+      Script: {instanceID: 12236}
     - Class: 114
-      Script: {instanceID: 12486}
+      Script: {instanceID: 12360}
     - Class: 114
-      Script: {instanceID: 12490}
+      Script: {instanceID: 12390}
     - Class: 114
-      Script: {instanceID: 12504}
+      Script: {instanceID: 12488}
     - Class: 114
-      Script: {instanceID: 12536}
+      Script: {instanceID: 12516}
     - Class: 114
-      Script: {instanceID: 12638}
+      Script: {instanceID: 12520}
     - Class: 114
-      Script: {instanceID: 12692}
+      Script: {instanceID: 12534}
     - Class: 114
-      Script: {instanceID: 12756}
+      Script: {instanceID: 12566}
     - Class: 114
-      Script: {instanceID: 12876}
+      Script: {instanceID: 12628}
     - Class: 114
-      Script: {instanceID: 12908}
+      Script: {instanceID: 12670}
     - Class: 114
-      Script: {instanceID: 13110}
+      Script: {instanceID: 12716}
     - Class: 114
-      Script: {instanceID: 13124}
+      Script: {instanceID: 12728}
     - Class: 114
-      Script: {instanceID: 13178}
+      Script: {instanceID: 12794}
+    - Class: 114
+      Script: {instanceID: 12918}
+    - Class: 114
+      Script: {instanceID: 12950}
+    - Class: 114
+      Script: {instanceID: 12984}
+    - Class: 114
+      Script: {instanceID: 13090}
+    - Class: 114
+      Script: {instanceID: 13120}
+    - Class: 114
+      Script: {instanceID: 13158}
+    - Class: 114
+      Script: {instanceID: 13172}
+    - Class: 114
+      Script: {instanceID: 13226}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -147,6 +175,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
   scriptHashData:
   - hash:
       serializedVersion: 2
@@ -156,10 +186,22 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
+      Hash: 5f1752ed2092162f016c19510c28a8b9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
+  - hash:
+      serializedVersion: 2
       Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: aeb62f729c52c814dec86c47dcac1471
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: 1c8a49ecb9ca4470370a6be61fa6cf28
@@ -214,12 +256,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
-  - hash:
-      serializedVersion: 2
-      Hash: aeb62f729c52c814dec86c47dcac1471
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
   - hash:
       serializedVersion: 2
       Hash: 499fd23433e68e265d153aa6b95d0047
@@ -378,6 +414,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 5d72f7002966b891d5cb66f953848ebe
+    assemblyName: IngameDebugConsole.Runtime.dll
+    namespaceName: IngameDebugConsole
+    className: DebugLogRecycledListView
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -394,6 +436,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ViewInformation
+  - hash:
+      serializedVersion: 2
+      Hash: 45763c5633962fe4e7ad13b675515e66
+    assemblyName: IngameDebugConsole.Runtime.dll
+    namespaceName: IngameDebugConsole
+    className: DebugLogResizeListener
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -414,16 +462,16 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 5f1752ed2092162f016c19510c28a8b9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
       Hash: f84d945e5e1ca985698660fc26e9657f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 150d2705ec079b79d52ccce665aab8e1
+    assemblyName: IngameDebugConsole.Runtime.dll
+    namespaceName: IngameDebugConsole
+    className: DebugLogPopup
   - hash:
       serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
@@ -486,10 +534,22 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: 698ee8e8df65f02b2ae534f8cb52a856
+    assemblyName: IngameDebugConsole.Runtime.dll
+    namespaceName: IngameDebugConsole
+    className: DebugLogItem
+  - hash:
+      serializedVersion: 2
       Hash: d03069bb71f8f494094d33096aab9886
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PieGraph
+  - hash:
+      serializedVersion: 2
+      Hash: 9b070fd11003a7ac517c876788f0fb2a
+    assemblyName: IngameDebugConsole.Runtime.dll
+    namespaceName: IngameDebugConsole
+    className: DebugsOnScrollListener
   - hash:
       serializedVersion: 2
       Hash: 6939772cb3ce775a8e8d99f332534491
@@ -532,6 +592,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: b1389d29ae90b2ad436288064d066dd4
+    assemblyName: IngameDebugConsole.Runtime.dll
+    namespaceName: IngameDebugConsole
+    className: DebugLogManager
   - hash:
       serializedVersion: 2
       Hash: 8cd1cbba27f3cb1717254f668e9e0d5a
@@ -637,4 +703,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Crowd-Moni-System---Unity/Sql/Builds/8-7-21_2256/Monitoring System.exe
+  playerPath: D:/Crowd-Moni-System---Unity/Sql/Builds/8-7-21_2331/Crowd System.exe
