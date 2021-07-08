@@ -77,7 +77,6 @@ public class PieGraph : MonoBehaviour
             int temp = 0,container=0;
             while (rd.Read())
             {
-
                 building = rd["BUILDING_NAME"].ToString();
 
                 query3 = "SELECT ID FROM INFORMATION";
@@ -86,7 +85,6 @@ public class PieGraph : MonoBehaviour
 
                 while (rd2.Read())
                 {
-
                     id = rd2["ID"].ToString();
 
                     query4 = "SELECT COUNT(*) FROM ATTENDANCE WHERE BUILDING_NAME = '" + building + "' AND ID = '" + id + "' AND REMARKS = 'IN'";
