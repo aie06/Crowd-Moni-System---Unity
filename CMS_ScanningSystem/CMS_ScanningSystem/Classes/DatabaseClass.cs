@@ -15,15 +15,16 @@ namespace CMS_ScanningSystem.Classes
     {
 
         static SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\Room_Database.mdf;Integrated Security=True");
-        static SqlConnection serverCon = new SqlConnection(@"Data Source=CHA_ROLD;Initial Catalog=CROWD_MONITORING_SYSTEM;User ID=sa;Password=cha08");
+        static SqlConnection serverCon;
         static SqlCommand cmd;
         static SqlDataAdapter sda, innersda,sdaTemp;
         static DataTable dt,innerdt,dtTemp;
-        static string query,remarks;
+        public static string query,remarks;
         static SqlDataReader reader;
         public static string roomName = "";
         static int id = 1;
         static bool check = true;
+      
 
         // ROOM DETAILS---------------------------------------------
         public static void InsertRoomDetails(string buildingName, string floor, string room)
@@ -60,15 +61,24 @@ namespace CMS_ScanningSystem.Classes
         }
         public static void BuildingList(ComboBox list,string query, string rowName)
         {
-            list.Items.Clear();
-            serverCon.Open();
-            cmd = new SqlCommand(query, serverCon);
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                list.Items.Add(reader[rowName].ToString());
+                list.Items.Clear();
+                serverCon.Open();
+                cmd = new SqlCommand(query, serverCon);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Items.Add(reader[rowName].ToString());
+                }
+                serverCon.Close();
             }
-            serverCon.Close();
+            catch (Exception)
+            {
+                MessageBox.Show("Invalid Connection!");
+            }
+      
+           
         }
         //---------------------------------------------------------
 
@@ -160,5 +170,66 @@ namespace CMS_ScanningSystem.Classes
             cmd.ExecuteNonQuery();
             serverCon.Close(); 
         }
-    }
+        public static void ClearDatabaseSetup()
+        {
+            cmd = new SqlCommand("DELETE FROM DATABASE_SETUP", con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public static void DatabaseSetup(TextBox servername, TextBox portNo, TextBox userId,TextBox password)
+        {
+           
+            ClearDatabaseSetup();
+            query = "INSERT INTO DATABASE_SETUP(SERVERNAME,PORT_NO,USER_ID,PASSWORD)VALUES('" + servername.Text + "','" + portNo.Text + "','" + userId.Text + "','" + password.Text + "')";
+            cmd = new SqlCommand(query, con);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+           
+        }
+        public static int DatabaseSetupCheck()
+        {
+            cmd = new SqlCommand("SELECT COUNT(*) FROM DATABASE_SETUP", con);
+            con.Open();
+            int rowCount = (Int32)cmd.ExecuteScalar();
+            con.Close();
+            return rowCount;
+        }
+        public static void SetDatabaseConnection()
+        {
+            try
+            {
+                cmd = new SqlCommand("SELECT * FROM DATABASE_SETUP", con);
+                con.Open();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string connection = @"Data Source=" + reader["SERVERNAME"].ToString() + "," + reader["PORT_NO"].ToString() + ";Initial Catalog=CROWD_MONITORING_SYSTEM;User ID=" + reader["USER_ID"].ToString() + ";Password=" + reader["PASSWORD"].ToString();
+                    serverCon = new SqlConnection(connection);
+                }
+                con.Close();
+              
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Invalid Connection!");
+            }
+        }
+        public static int CheckDatabase_Setup()
+        {
+            try
+            {
+                cmd = new SqlCommand("SELECT COUNT(*) BUILDING_INFO", serverCon);
+                serverCon.Open();
+                int rowCount = (Int32)cmd.ExecuteScalar();
+                serverCon.Close();
+                return rowCount;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+    } 
 }

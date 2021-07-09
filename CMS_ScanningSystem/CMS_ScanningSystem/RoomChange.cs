@@ -35,16 +35,6 @@ namespace CMS_ScanningSystem
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            var condition = MessageBox.Show("Are you sure you want to cancel this process?", "Message", MessageBoxButtons.YesNo);
-            if (condition == DialogResult.Yes)
-            {
-                this.Hide();
-                new ScanningSystem().ShowDialog();
-            }
-        }
-
         private void cbBuilding_SelectedIndexChanged(object sender, EventArgs e)
         {
             query = "SELECT FLOOR_NO FROM FLOOR_INFO WHERE BUILDING_NAME ='" + cbBuilding.Text + "'";

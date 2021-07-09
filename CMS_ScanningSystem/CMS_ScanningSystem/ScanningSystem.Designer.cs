@@ -78,12 +78,12 @@
             this.btnRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRoom.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRoom.ForeColor = System.Drawing.Color.White;
-            this.btnRoom.Location = new System.Drawing.Point(8, 9);
+            this.btnRoom.Location = new System.Drawing.Point(8, 25);
             this.btnRoom.Margin = new System.Windows.Forms.Padding(2);
             this.btnRoom.Name = "btnRoom";
-            this.btnRoom.Size = new System.Drawing.Size(121, 63);
+            this.btnRoom.Size = new System.Drawing.Size(121, 47);
             this.btnRoom.TabIndex = 1;
-            this.btnRoom.Text = "Change Room";
+            this.btnRoom.Text = "Setup";
             this.btnRoom.UseVisualStyleBackColor = false;
             this.btnRoom.Click += new System.EventHandler(this.btnRoom_Click);
             // 

@@ -31,13 +31,35 @@ namespace CMS_ScanningSystem
             if (lbRoomName.Text == "")
             {
                 this.Hide();
-                new Admin().ShowDialog();
+                new RoomChange().ShowDialog();
+            }
+            if (DatabaseClass.DatabaseSetupCheck() == 0)
+            {
+                this.Hide();
+                new DatabaseSetup().ShowDialog();
+            }
+            //else if (DatabaseClass.CheckDatabase_Setup() == 0)
+            //{
+            //    this.Hide();
+            //    new DatabaseSetup().ShowDialog();
+            //}
+            else
+            {
+                try
+                {
+                    DatabaseClass.SetDatabaseConnection();
+                }
+                catch (Exception)
+                {
+                    this.Hide();
+                    new DatabaseSetup().ShowDialog();
+                }
             }
         }
 
         private void btnRoom_Click(object sender, EventArgs e)
         {
-            var condition = MessageBox.Show("ADMIN ACCESS.\nAre you sure you want to change the room?", "Change of Room",MessageBoxButtons.YesNo);
+            var condition = MessageBox.Show("Are you sure you want to change the Setup?", "Warning Message",MessageBoxButtons.YesNo);
             if (condition == DialogResult.Yes)
             {
                 this.Hide();
