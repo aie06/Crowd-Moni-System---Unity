@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System;
+using TMPro;
 
 
 public class PieGraph : MonoBehaviour
@@ -12,6 +13,13 @@ public class PieGraph : MonoBehaviour
     public float[] values;
     public Color[] wedgeColors;
     public Image wedgePrefab;
+    public TMP_Text whiteCount;
+    public TMP_Text greenCount;
+    public TMP_Text yellowCount;
+    public TMP_Text orangeCount;
+    public TMP_Text redCount;
+
+
     SqlConnection con;
     SqlCommand cmd, cmd1, cmd2, cmd3,cmd4;
     SqlDataReader rd, rd1, rd2;
@@ -19,12 +27,12 @@ public class PieGraph : MonoBehaviour
     DateTime oDate;
     string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     string building, id, cap;
-    int count, capa, bldgcap, white, green, yellow, orange, red,capacityOfEachBldg,countsOfStudents;
-    float fifty = .5f, seventyfour = .74f;
+   public int count, capa, bldgcap, white, green, yellow, orange, red,whitelbl,greenlbl,yellowlbl,orangelbl,redlbl,capacityOfEachBldg,countsOfStudents;
+   public float fifty = .5f, seventyfour = .74f;
     ArrayList colors = new ArrayList();
-    ArrayList counts = new ArrayList();
-    ArrayList capacity = new ArrayList();
-    ArrayList buildings = new ArrayList();
+    public ArrayList counts = new ArrayList();
+    public ArrayList capacity = new ArrayList();
+    public ArrayList buildings = new ArrayList();
 
 
     public SpriteRenderer[] bldgs;
@@ -33,15 +41,19 @@ public class PieGraph : MonoBehaviour
     void Start()
     {
         Graphbldg();
+     
     }
 
     public void Graphbldg()
     {
+       
+        
         counts = new ArrayList();
         buildings = new ArrayList();
         capacity = new ArrayList();
-        green = 0; yellow = 0; orange = 0; red = 0;white = 0; 
-        
+        green = 0; yellow = 0; orange = 0; red = 0;white = 0;
+        whitelbl = 0; greenlbl = 0; yellowlbl = 0; orangelbl = 0; redlbl = 0;
+        greenCount.text = "0"; yellowCount.text = "0"; orangeCount.text = "0"; redCount.text = "0"; whiteCount.text = "0";
         if (transform.childCount > 0)
         {
             Transform[] con = new Transform[transform.childCount];
@@ -92,10 +104,12 @@ public class PieGraph : MonoBehaviour
                     cmd3 = new SqlCommand(query4, con);
                         count += (Int32)cmd3.ExecuteScalar();
                     
-                }            
-                counts.Add(count);
-                buildings.Add(building);
-                count = 0;
+                }
+            
+                    counts.Add(count);
+                    buildings.Add(building);
+                    count = 0;
+               
             }
             
             for (int i = 0; i < counts.Count; i++) 
@@ -120,32 +134,43 @@ public class PieGraph : MonoBehaviour
                countsOfStudents = (Int32)counts[i];
                 if (countsOfStudents <= (capacityOfEachBldg * fifty) && countsOfStudents > 0)
                 {
+                    greenlbl++;
                     green = (int)counts[i];
                     values[0] += green;
                     bldgs[i].color = wedgeColors[0];
+                    greenCount.text = greenlbl.ToString();
+
+                   
                 }
                 else if (countsOfStudents > (capacityOfEachBldg * fifty) && countsOfStudents <= (seventyfour * capacityOfEachBldg))
                 {
+                    yellowlbl++; 
                     yellow = (int)counts[i];
                     values[1] += yellow;
                     bldgs[i].color = wedgeColors[1];
+                    yellowCount.text = yellowlbl.ToString();
                 }
                 else if (countsOfStudents > (seventyfour * capacityOfEachBldg) && countsOfStudents <= capacityOfEachBldg)
                 {
+                    orangelbl++;
                     orange = (int)counts[i];
                     values[2] += orange;
                     bldgs[i].color = wedgeColors[2];
+                    orangeCount.text = orangelbl.ToString();
                 }
                 else if (countsOfStudents > capacityOfEachBldg)
                 {
+                    redlbl++;
                     red = (int)counts[i];
                     values[3] += red;
                     bldgs[i].color = wedgeColors[3];
+                    redCount.text = redlbl.ToString();
                 }
                 else {
-                   
+                    whitelbl++;
                     values[4] = capacityOfEachBldg;
                     bldgs[i].color = wedgeColors[4];
+                    whiteCount.text = whitelbl.ToString();
                 }
 
             }
@@ -173,5 +198,7 @@ public class PieGraph : MonoBehaviour
             }
          
         }
+
+       
     }
 }

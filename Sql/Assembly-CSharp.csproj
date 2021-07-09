@@ -70,6 +70,7 @@
     <Compile Include="Assets\DataEntry.cs" />
     <Compile Include="Assets\DataEntryAttendance.cs" />
     <Compile Include="Assets\DatabaseClass.cs" />
+    <Compile Include="Assets\DensityPercentage.cs" />
     <Compile Include="Assets\EnumHelper.cs" />
     <Compile Include="Assets\PieGraph.cs" />
     <Compile Include="Assets\Rooms.cs" />
