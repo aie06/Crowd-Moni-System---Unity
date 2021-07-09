@@ -22,10 +22,22 @@ namespace CMS_ScanningSystem
         {
             this.Hide();
             new RoomChange().ShowDialog();
-            
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+      
+        private void btnProgramClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+      
+        private void btnDatabaseSetup_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new DatabaseSetup().ShowDialog();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
             new ScanningSystem().ShowDialog();

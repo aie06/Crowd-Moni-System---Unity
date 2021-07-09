@@ -26,3 +26,4 @@ D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.csproj.CoreCompileInputs.cache
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.exe
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.pdb
+D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Debug\CMS_ScanningSystem.DatabaseSetup.resources
