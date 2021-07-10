@@ -11,6 +11,11 @@ using System.IO;
 using System;
 public class DatabaseClass : MonoBehaviour
 {
+    public TMP_InputField serverName;
+    public TMP_InputField portNo;
+    public TMP_InputField userId;
+    public TMP_InputField password;
+
     public TMP_InputField id;
     public TMP_InputField course;
     public TMP_InputField lastname;
@@ -22,8 +27,6 @@ public class DatabaseClass : MonoBehaviour
     static SqlCommand cmd;
     string temp;
     SqlConnection con;
-    string connectionString = @"Data Source=CHA_ROLD,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; User ID = sa; Password=cha08";
-
     public void GenerateQr() {
         if (!(id.text == "" || course.text == "" || lastname.text == "" || firstname.text == "" || middlename.text == ""))
         {
@@ -42,7 +45,8 @@ public class DatabaseClass : MonoBehaviour
         {
             byte[] arr = text.ImgToBytes();
 
-            con = new SqlConnection(connectionString);
+            if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+                con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
             try
             {
 

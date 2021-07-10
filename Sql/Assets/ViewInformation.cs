@@ -10,6 +10,11 @@ using TMPro;
 
 public class ViewInformation : MonoBehaviour
 {
+    public TMP_InputField serverName;
+    public TMP_InputField portNo;
+    public TMP_InputField userId;
+    public TMP_InputField password;
+
     public enum BuildingName {None,B1,B2,B3}
     public enum FloorLevel {None,Ground,Second,Third}
     public enum RoomNumber {None,Room1,Room2,Room3,Room4}
@@ -33,17 +38,18 @@ public class ViewInformation : MonoBehaviour
     public RoomNumber Room = RoomNumber.None;
 
     string query;
-    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     SqlConnection con;
     SqlCommand cmd;
     SqlDataReader rd;
-
+    
     #region Data Viewer
     public void ViewTableData()
     {
         ResetViewData();
-        con = new SqlConnection(connectionString);
-       
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
+
+
         con.Open();
         if (con.State == ConnectionState.Open)
         {
@@ -92,7 +98,8 @@ public class ViewInformation : MonoBehaviour
     public void ViewAttendance()
     {
         ResetAttendanceData();
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
         con.Open();
         if (con.State == ConnectionState.Open)
         {
@@ -133,7 +140,8 @@ public class ViewInformation : MonoBehaviour
 
     public void FilteringBuilding()
     {
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
         filterBuilding.ClearOptions();
         con.Open();
         if (con.State == ConnectionState.Open)
@@ -155,7 +163,8 @@ public class ViewInformation : MonoBehaviour
     {
         if (buildingEmpty.text.Equals("All"))
             filterFloor.gameObject.SetActive(false);
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
         filterFloor.ClearOptions();
         con.Open();
         if (con.State == ConnectionState.Open)
@@ -175,7 +184,8 @@ public class ViewInformation : MonoBehaviour
 
     public void FilteringRoom()
     {
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
         filterRoom.ClearOptions();
         con.Open();
         if (con.State == ConnectionState.Open)
@@ -194,7 +204,8 @@ public class ViewInformation : MonoBehaviour
     }
     public void ViewAttendacePerBuilding()
     {
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
         ResetAttendanceData();
         con.Open();
         if (con.State == ConnectionState.Open)
@@ -223,7 +234,8 @@ public class ViewInformation : MonoBehaviour
     public void ViewAttendancePerFloor()
     {
 
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
         ResetAttendanceData();
         con.Open();
         if (con.State == ConnectionState.Open)
@@ -254,7 +266,8 @@ public class ViewInformation : MonoBehaviour
     }
     public void ViewAttendancePerRoom()
     {
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
         ResetAttendanceData();
         con.Open();
         if (con.State == ConnectionState.Open)

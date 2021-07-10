@@ -10,6 +10,11 @@ using TMPro;
 
 public class PieGraph : MonoBehaviour
 {
+    public TMP_InputField serverName;
+    public TMP_InputField portNo;
+    public TMP_InputField userId;
+    public TMP_InputField password;
+
     public float[] values;
     public Color[] wedgeColors;
     public Image wedgePrefab;
@@ -25,7 +30,6 @@ public class PieGraph : MonoBehaviour
     SqlDataReader rd, rd1, rd2;
     string query, query1, query2, query3, query4;
     DateTime oDate;
-    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
     string building, id, cap;
    public int count, capa, bldgcap, white, green, yellow, orange, red,whitelbl,greenlbl,yellowlbl,orangelbl,redlbl,capacityOfEachBldg,countsOfStudents;
    public float fifty = .5f, seventyfour = .74f;
@@ -33,15 +37,15 @@ public class PieGraph : MonoBehaviour
     public ArrayList counts = new ArrayList();
     public ArrayList capacity = new ArrayList();
     public ArrayList buildings = new ArrayList();
-
-
+   
     public SpriteRenderer[] bldgs;
 
     // Start is called before the first frame update
-    void Start()
+    
+    private void Awake()
     {
-        Graphbldg();
-     
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            Graphbldg();
     }
 
     public void Graphbldg()
@@ -75,9 +79,10 @@ public class PieGraph : MonoBehaviour
             values[i]=0;
         }
 
-        con = new SqlConnection(connectionString);
-        //entryTemplate.gameObject.SetActive(false);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
 
+        //entryTemplate.gameObject.SetActive(false);
         con.Open();
         if (con.State == ConnectionState.Open)
         {

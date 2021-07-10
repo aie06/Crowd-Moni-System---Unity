@@ -5,18 +5,22 @@ using UnityEngine.UI;
 using System.Data.SqlClient;
 using System.Data;
 using System;
+using TMPro;
 
 
 public class Sample : MonoBehaviour
 {
-
+    public TMP_InputField serverName;
+    public TMP_InputField portNo;
+    public TMP_InputField userId;
+    public TMP_InputField password;
 
     SqlConnection con;
     bool c;
     SqlCommand cmd, cmd1, cmd2, cmd3, cmd4, cmdf, cmdID,cmdR;
     SqlDataReader rd, rd1, rd2, rdf, rdID,rdR;
     string query, query1, query2, query3, query4, queryf, queryID,queryRoom;
-    string connectionString = @"Data Source=DESKTOP-SSEOURC\SQLEXPRESS,1433;Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = sa; Password=adminaie";
+  
     string building, floor, room, id, cap;
     int count, roomcount, count2,capa, bldgcap, white, green, yellow, orange, red, capacityOfEachRoom, countsOfStudents,countsperRoom, temp,whitelbl, greenlbl, yellowlbl, orangelbl, redlbl;
     float fifty = .5f, seventyfour = .74f;
@@ -25,7 +29,6 @@ public class Sample : MonoBehaviour
     ArrayList capacity = new ArrayList();
     ArrayList buildings = new ArrayList();
     ArrayList rms = new ArrayList();
-    
 
     // Start is called before the first frame update
 
@@ -74,12 +77,13 @@ public class Sample : MonoBehaviour
             graph.values[i] = 0;
 
         }
-    
-        Graph(bldg);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            Graph(bldg);
     }
     public void Graph(string ICT) {
-
-        con = new SqlConnection(connectionString);
+        if (!(serverName.text.Equals("") || portNo.text.Equals("") || userId.text.Equals("") || password.text.Equals("")))
+            con = new SqlConnection(@"Data Source=" + serverName.text.Trim() + "," + portNo.text.Trim() + ";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = " + userId.text.Trim() + "; Password=" + password.text.Trim());
+       
         con.Open();
         if (con.State == ConnectionState.Open)
         {

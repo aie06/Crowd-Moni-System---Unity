@@ -19,9 +19,9 @@ public class Validations : MonoBehaviour
 
     public void InvalidInputNull()
     {
-        if(id.text == "" || courseAndDept.text == "" || lastName.text == "" || firstName.text == "" || middleName.text == "")
+        if(id.text.Equals("") || courseAndDept.text.Equals("") || lastName.text.Equals("") || firstName.text.Equals("") || middleName.text.Equals(""))
         {
-            message.text = "Please fill up all fields!";
+            message.text = "Please fill up all inputfields!";
             message.color = Color.red;
             BgMessage.gameObject.SetActive(true);
             imgQr.gameObject.SetActive(false);
