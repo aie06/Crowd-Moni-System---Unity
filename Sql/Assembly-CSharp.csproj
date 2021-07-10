@@ -73,10 +73,11 @@
     <Compile Include="Assets\DatabaseSetupAndLogIn.cs" />
     <Compile Include="Assets\DensityPercentage.cs" />
     <Compile Include="Assets\EnumHelper.cs" />
+    <Compile Include="Assets\GraphAndRoomColors.cs" />
     <Compile Include="Assets\PieGraph.cs" />
     <Compile Include="Assets\Rooms.cs" />
-    <Compile Include="Assets\Sample.cs" />
     <Compile Include="Assets\Script.cs" />
+    <Compile Include="Assets\SearchBldg.cs" />
     <Compile Include="Assets\Validations.cs" />
     <Compile Include="Assets\ViewInformation.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

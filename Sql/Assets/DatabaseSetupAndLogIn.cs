@@ -21,6 +21,9 @@ public class DatabaseSetupAndLogIn : MonoBehaviour
     SqlConnection con;
     SqlCommand cmd;
 
+    
+
+
     public string DatabaseSetup()
     {
         return @"Data Source="+serverName.text.Trim()+","+portNo.text.Trim()+";Initial Catalog = CROWD_MONITORING_SYSTEM; MultipleActiveResultSets=true; User ID = "+userId.text.Trim()+"; Password="+password.text.Trim();

@@ -10,9 +10,9 @@ using TMPro;
 public class DensityPercentage : MonoBehaviour
 {
     public PieGraph densityPercent;
-    
-    public TMP_Text density;
 
+    public TMP_Text density;
+    int whitelbl, greenlbl, yellowlbl, orangelbl, redlbl = 0;
     //string filter;
     //SqlConnection con;
     //bool c;
@@ -29,8 +29,8 @@ public class DensityPercentage : MonoBehaviour
     void Start()
     {
         //rm = GetComponent<Rooms>();
-      
-        
+
+
     }
     public void OnMouseDown()
     {
@@ -67,6 +67,8 @@ public class DensityPercentage : MonoBehaviour
     }
     public void Graphs()
     {
+        densityPercent.greenCount.text = "0"; densityPercent.yellowCount.text = "0"; densityPercent.orangeCount.text = "0"; densityPercent.redCount.text = "0"; densityPercent.whiteCount.text = "0";
+        whitelbl = 0; greenlbl = 0; yellowlbl = 0; orangelbl = 0; redlbl = 0;
         for (int i = 0; i < densityPercent.counts.Count; i++)
         {
             densityPercent.bldgs[i].color = densityPercent.wedgeColors[4];
@@ -152,27 +154,33 @@ public class DensityPercentage : MonoBehaviour
                 densityPercent.countsOfStudents = (Int32)densityPercent.counts[i];
                 if (densityPercent.countsOfStudents <= (densityPercent.capacityOfEachBldg * densityPercent.fifty) && densityPercent.countsOfStudents > 0)
                 {
+                    greenlbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[0];
-                    
+                    densityPercent.greenCount.text = greenlbl.ToString();
                 }
                 else if (densityPercent.countsOfStudents > (densityPercent.capacityOfEachBldg * densityPercent.fifty) && densityPercent.countsOfStudents <= (densityPercent.seventyfour * densityPercent.capacityOfEachBldg))
                 {
-
+                    yellowlbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[1];
+                    densityPercent.yellowCount.text = yellowlbl.ToString();
                 }
                 else if (densityPercent.countsOfStudents > (densityPercent.seventyfour * densityPercent.capacityOfEachBldg) && densityPercent.countsOfStudents <= densityPercent.capacityOfEachBldg)
                 {
-
+                    orangelbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[2];
+                    densityPercent.orangeCount.text = orangelbl.ToString();
                 }
                 else if (densityPercent.countsOfStudents > densityPercent.capacityOfEachBldg)
                 {
-
+                    redlbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[3];
+                    densityPercent.redCount.text = redlbl.ToString();
                 }
                 else
                 {
+                    whitelbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[4];
+                    densityPercent.whiteCount.text = whitelbl.ToString();
                 }
             }
         }
@@ -185,7 +193,9 @@ public class DensityPercentage : MonoBehaviour
                 densityPercent.countsOfStudents = (int)densityPercent.counts[i];
                 if (densityPercent.countsOfStudents <= (densityPercent.capacityOfEachBldg * densityPercent.fifty) && densityPercent.countsOfStudents > 0)
                 {
+                    greenlbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[0];
+                    densityPercent.greenCount.text = greenlbl.ToString();
                 }
             }
             Debug.Log("Green");
@@ -198,7 +208,9 @@ public class DensityPercentage : MonoBehaviour
                 densityPercent.countsOfStudents = (int)densityPercent.counts[i];
                 if (densityPercent.countsOfStudents > (densityPercent.capacityOfEachBldg * densityPercent.fifty) && densityPercent.countsOfStudents <= (densityPercent.seventyfour * densityPercent.capacityOfEachBldg))
                 {
+                    yellowlbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[1];
+                    densityPercent.yellowCount.text = yellowlbl.ToString();
                 }
             }
             Debug.Log("Yellow");
@@ -212,7 +224,9 @@ public class DensityPercentage : MonoBehaviour
                 densityPercent.countsOfStudents = (int)densityPercent.counts[i];
                 if (densityPercent.countsOfStudents > (densityPercent.seventyfour * densityPercent.capacityOfEachBldg) && densityPercent.countsOfStudents <= densityPercent.capacityOfEachBldg)
                 {
+                    orangelbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[2];
+                    densityPercent.orangeCount.text = orangelbl.ToString();
                 }
             }
             Debug.Log("Orange");
@@ -225,10 +239,12 @@ public class DensityPercentage : MonoBehaviour
                 densityPercent.countsOfStudents = (int)densityPercent.counts[i];
                 if (densityPercent.countsOfStudents > densityPercent.capacityOfEachBldg)
                 {
+                    redlbl++;
                     densityPercent.bldgs[i].color = densityPercent.wedgeColors[3];
+                    densityPercent.redCount.text = redlbl.ToString();
                 }
             }
-            Debug.Log("Orange");
+            Debug.Log("Red");
         }
 
 
@@ -293,7 +309,7 @@ public class DensityPercentage : MonoBehaviour
 
 
 
-      
+
 
     }
 

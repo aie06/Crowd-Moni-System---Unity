@@ -5,9 +5,12 @@ ScriptsOnlyBuild:
     - DataEntry
     - DataEntryAttendance
     - DatabaseClass
+    - DatabaseSetupAndLogIn
+    - DensityPercentage
     - PieGraph
     - Rooms
     - Sample
+    - SearchBldg
     - Validations
     - ViewInformation
     IngameDebugConsole.Runtime.dll:
@@ -80,83 +83,89 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11272}
     - Class: 114
-      Script: {instanceID: 11274}
+      Script: {instanceID: 11312}
     - Class: 114
-      Script: {instanceID: 11276}
+      Script: {instanceID: 11322}
     - Class: 114
-      Script: {instanceID: 11288}
+      Script: {instanceID: 11368}
     - Class: 114
-      Script: {instanceID: 11298}
+      Script: {instanceID: 11484}
     - Class: 114
-      Script: {instanceID: 11344}
+      Script: {instanceID: 11524}
     - Class: 114
-      Script: {instanceID: 11462}
+      Script: {instanceID: 11546}
     - Class: 114
-      Script: {instanceID: 11522}
+      Script: {instanceID: 11638}
     - Class: 114
-      Script: {instanceID: 11614}
+      Script: {instanceID: 11724}
     - Class: 114
-      Script: {instanceID: 11700}
+      Script: {instanceID: 11824}
     - Class: 114
-      Script: {instanceID: 11800}
+      Script: {instanceID: 11866}
     - Class: 114
-      Script: {instanceID: 11842}
+      Script: {instanceID: 11892}
     - Class: 114
-      Script: {instanceID: 11868}
+      Script: {instanceID: 11918}
     - Class: 114
-      Script: {instanceID: 11894}
+      Script: {instanceID: 11944}
     - Class: 114
-      Script: {instanceID: 11920}
+      Script: {instanceID: 12086}
     - Class: 114
-      Script: {instanceID: 12094}
+      Script: {instanceID: 12120}
     - Class: 114
-      Script: {instanceID: 12164}
+      Script: {instanceID: 12190}
     - Class: 114
-      Script: {instanceID: 12206}
+      Script: {instanceID: 12232}
     - Class: 114
-      Script: {instanceID: 12212}
+      Script: {instanceID: 12238}
     - Class: 114
-      Script: {instanceID: 12236}
+      Script: {instanceID: 12262}
     - Class: 114
-      Script: {instanceID: 12360}
+      Script: {instanceID: 12324}
     - Class: 114
-      Script: {instanceID: 12390}
+      Script: {instanceID: 12388}
     - Class: 114
-      Script: {instanceID: 12488}
+      Script: {instanceID: 12418}
     - Class: 114
-      Script: {instanceID: 12516}
+      Script: {instanceID: 12514}
     - Class: 114
-      Script: {instanceID: 12520}
+      Script: {instanceID: 12542}
     - Class: 114
-      Script: {instanceID: 12534}
+      Script: {instanceID: 12546}
     - Class: 114
-      Script: {instanceID: 12566}
+      Script: {instanceID: 12560}
     - Class: 114
-      Script: {instanceID: 12628}
+      Script: {instanceID: 12592}
     - Class: 114
-      Script: {instanceID: 12670}
+      Script: {instanceID: 12654}
     - Class: 114
-      Script: {instanceID: 12716}
+      Script: {instanceID: 12696}
     - Class: 114
-      Script: {instanceID: 12728}
+      Script: {instanceID: 12742}
     - Class: 114
-      Script: {instanceID: 12794}
+      Script: {instanceID: 12754}
     - Class: 114
-      Script: {instanceID: 12918}
+      Script: {instanceID: 12820}
     - Class: 114
-      Script: {instanceID: 12950}
+      Script: {instanceID: 12902}
     - Class: 114
-      Script: {instanceID: 12984}
+      Script: {instanceID: 12946}
     - Class: 114
-      Script: {instanceID: 13090}
+      Script: {instanceID: 12978}
     - Class: 114
-      Script: {instanceID: 13120}
+      Script: {instanceID: 13012}
     - Class: 114
-      Script: {instanceID: 13158}
+      Script: {instanceID: 13118}
     - Class: 114
-      Script: {instanceID: 13172}
+      Script: {instanceID: 13148}
     - Class: 114
-      Script: {instanceID: 13226}
+      Script: {instanceID: 13186}
+    - Class: 114
+      Script: {instanceID: 13200}
+    - Class: 114
+      Script: {instanceID: 13254}
+    - Class: 114
+      Script: {instanceID: 19550}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -184,18 +193,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ContentSizeFitter
-  - hash:
-      serializedVersion: 2
-      Hash: 5f1752ed2092162f016c19510c28a8b9
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: aeb62f729c52c814dec86c47dcac1471
@@ -276,6 +273,12 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
+      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -354,7 +357,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 0d453cf8f5fcabd2bf3f3c7ad6837c6e
+      Hash: d25435c5405943938681ca3fe4cdc45f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DatabaseClass
@@ -402,6 +405,12 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: d12c4f5837e0fd5e08d725d1eba646dd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DatabaseSetupAndLogIn
+  - hash:
+      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -432,7 +441,7 @@ ScriptsOnlyBuild:
     className: Script
   - hash:
       serializedVersion: 2
-      Hash: 1e3082bcae7a45ba74961991e212ea1b
+      Hash: 440bd836130c5efba70702510320a491
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ViewInformation
@@ -460,6 +469,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 5f1752ed2092162f016c19510c28a8b9
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Button
   - hash:
       serializedVersion: 2
       Hash: f84d945e5e1ca985698660fc26e9657f
@@ -540,7 +555,7 @@ ScriptsOnlyBuild:
     className: DebugLogItem
   - hash:
       serializedVersion: 2
-      Hash: d03069bb71f8f494094d33096aab9886
+      Hash: 1ddb24744d5ecceee1a1bda5eb68a544
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PieGraph
@@ -574,6 +589,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: bc59882e3d368ad0d9e3a383ed8edc2c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DensityPercentage
   - hash:
       serializedVersion: 2
       Hash: e7145f0ee1e6c730e1a7f07bca3318cf
@@ -696,11 +717,17 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 978bebb08ce6df7f683584c853c75e99
+      Hash: d0a0f437d9b67de297c5b367e57d556a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Sample
+  - hash:
+      serializedVersion: 2
+      Hash: c54c632d5295ba4d0143e57c6c3ecfad
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SearchBldg
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Crowd-Moni-System---Unity/Sql/Builds/8-7-21_2331/Crowd System.exe
+  playerPath: D:/Crowd-Moni-System---Unity/Sql/Builds/10-07-21_608/Crowd System.exe
