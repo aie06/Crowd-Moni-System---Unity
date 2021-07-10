@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 
 
-public class Sample : MonoBehaviour
+public class GraphAndRoomColors : MonoBehaviour
 {
     public TMP_InputField serverName;
     public TMP_InputField portNo;
@@ -267,27 +267,30 @@ public class Sample : MonoBehaviour
                         {
                             greenlbl++;
                             r.MyImage[y].color = graph.wedgeColors[0];
-                            graph.greenCount.text = greenlbl.ToString();
-                            Debug.Log("GREEN " + graph.greenCount.text);
+                            graph.greenCount.text = greenlbl.ToString();   
                         }
                         else if (countsOfStudents > (capacityOfEachRoom * fifty) && countsOfStudents <= (seventyfour * capacityOfEachRoom)) {
+                            yellowlbl++;
                             r.MyImage[y].color = graph.wedgeColors[1];
+                            graph.yellowCount.text = yellowlbl.ToString(); 
                         }
                         else if (countsOfStudents > (seventyfour * capacityOfEachRoom) && countsOfStudents <= capacityOfEachRoom)
                         {
+                            orangelbl++;
                             r.MyImage[y].color = graph.wedgeColors[2];
+                            graph.orangeCount.text = orangelbl.ToString();
                         }
                         else if (countsOfStudents > capacityOfEachRoom)
                         {
+                            redlbl++;
                             r.MyImage[y].color = graph.wedgeColors[3];
+                            graph.redCount.text = redlbl.ToString();
                         }
                         else
                         {
                             whitelbl++;
                             r.MyImage[y].color = graph.wedgeColors[4];
                             graph.whiteCount.text = whitelbl.ToString();
-                            Debug.Log("WHITE " + graph.whiteCount.text);
-
                         }
                     }
                 }

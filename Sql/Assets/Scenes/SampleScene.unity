@@ -13665,6 +13665,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34086efffd468364eb4d4c0654ea37eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serverName: {fileID: 137750171}
+  portNo: {fileID: 1409571152}
+  userId: {fileID: 605766810}
+  password: {fileID: 496094340}
+  bldgs: []
+  build: {fileID: 154586223}
+  eachbldg: {fileID: 269892246}
+  rooms: {fileID: 0}
+  graph: {fileID: 2137997118}
 --- !u!61 &1065212586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17594,6 +17603,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34086efffd468364eb4d4c0654ea37eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serverName: {fileID: 137750171}
+  portNo: {fileID: 1409571152}
+  userId: {fileID: 605766810}
+  password: {fileID: 496094340}
+  bldgs: []
+  build: {fileID: 154586223}
+  eachbldg: {fileID: 2098402255}
+  rooms: {fileID: 0}
+  graph: {fileID: 2137997118}
 --- !u!114 &1349475538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18706,6 +18724,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34086efffd468364eb4d4c0654ea37eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serverName: {fileID: 137750171}
+  portNo: {fileID: 1409571152}
+  userId: {fileID: 605766810}
+  password: {fileID: 496094340}
+  bldgs: []
+  build: {fileID: 154586223}
+  eachbldg: {fileID: 1715038286}
+  rooms: {fileID: 0}
+  graph: {fileID: 2137997118}
 --- !u!61 &1443478683
 BoxCollider2D:
   m_ObjectHideFlags: 0
