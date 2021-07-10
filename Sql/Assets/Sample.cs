@@ -167,9 +167,6 @@ public class Sample : MonoBehaviour
             }
            
 
-
-            //Debug.Log("Capacity " + capacity.Count);
-            //Debug.Log("counting " + counting.Count);
             //GRAPH
             for (int i = 0; i < counting.Count; i++)
             {
@@ -232,20 +229,10 @@ public class Sample : MonoBehaviour
                 zRotation -= newWedge.fillAmount * 360f;
             }
 
-
-
-
-
-
-
-
             Debug.Log(counts.Count);
             Debug.Log(capacity.Count);
             Debug.Log(counts[0]);
             Debug.Log(counts[1]);
-
-
-
 
             for (int i = 0; i < roomcount; i++)
             {
@@ -263,22 +250,28 @@ public class Sample : MonoBehaviour
                             Debug.Log("GREEN " + graph.greenCount.text);
                         }
                         else if (countsOfStudents > (capacityOfEachRoom * fifty) && countsOfStudents <= (seventyfour * capacityOfEachRoom)) {
+                            yellowlbl++;
                             r.MyImage[y].color = graph.wedgeColors[1];
+                            graph.yellowCount.text = yellowlbl.ToString();
                         }
                         else if (countsOfStudents > (seventyfour * capacityOfEachRoom) && countsOfStudents <= capacityOfEachRoom)
                         {
+                            orangelbl++;
                             r.MyImage[y].color = graph.wedgeColors[2];
+                            graph.orangeCount.text = orangelbl.ToString();
                         }
                         else if (countsOfStudents > capacityOfEachRoom)
                         {
+                            redlbl++;
                             r.MyImage[y].color = graph.wedgeColors[3];
+                            graph.redCount.text = redlbl.ToString();
                         }
                         else
                         {
                             whitelbl++;
                             r.MyImage[y].color = graph.wedgeColors[4];
                             graph.whiteCount.text = whitelbl.ToString();
-                            Debug.Log("WHITE " + graph.whiteCount.text);
+                           
 
                         }
                     }
