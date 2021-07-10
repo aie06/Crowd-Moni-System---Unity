@@ -642,11 +642,11 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Crowd-Moni-System---Unity/Sql/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Crowd-Moni-System---Unity/Sql/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:/Crowd-Moni-System---Unity/Sql/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>D:/Crowd-Moni-System---Unity/Sql/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
