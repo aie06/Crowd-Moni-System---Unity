@@ -30,10 +30,10 @@
         {
             this.btnLogin = new System.Windows.Forms.Button();
             this.AdminContainer = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnDatabaseSetup = new System.Windows.Forms.Button();
             this.btnProgramClose = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AdminContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +50,7 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(253, 44);
             this.btnLogin.TabIndex = 5;
-            this.btnLogin.Text = "Cange Room";
+            this.btnLogin.Text = "Change Room";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -64,6 +64,20 @@
             this.AdminContainer.Name = "AdminContainer";
             this.AdminContainer.Size = new System.Drawing.Size(450, 415);
             this.AdminContainer.TabIndex = 7;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnBack);
+            this.groupBox1.Controls.Add(this.btnDatabaseSetup);
+            this.groupBox1.Controls.Add(this.btnProgramClose);
+            this.groupBox1.Controls.Add(this.btnLogin);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(36, 23);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(380, 371);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Setup";
             // 
             // btnBack
             // 
@@ -112,20 +126,6 @@
             this.btnProgramClose.Text = "Close Program";
             this.btnProgramClose.UseVisualStyleBackColor = false;
             this.btnProgramClose.Click += new System.EventHandler(this.btnProgramClose_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnBack);
-            this.groupBox1.Controls.Add(this.btnDatabaseSetup);
-            this.groupBox1.Controls.Add(this.btnProgramClose);
-            this.groupBox1.Controls.Add(this.btnLogin);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(36, 23);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(380, 371);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Setup";
             // 
             // Admin
             // 

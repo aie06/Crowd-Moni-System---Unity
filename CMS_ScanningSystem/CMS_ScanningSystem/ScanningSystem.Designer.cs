@@ -154,7 +154,7 @@
             // 
             this.lbTimeInOrOut.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTimeInOrOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbTimeInOrOut.Font = new System.Drawing.Font("Impact", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTimeInOrOut.Font = new System.Drawing.Font("Impact", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTimeInOrOut.Location = new System.Drawing.Point(0, 153);
             this.lbTimeInOrOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTimeInOrOut.Name = "lbTimeInOrOut";

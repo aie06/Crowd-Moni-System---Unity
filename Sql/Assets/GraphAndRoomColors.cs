@@ -91,14 +91,6 @@ public class GraphAndRoomColors : MonoBehaviour
         con.Open();
         if (con.State == ConnectionState.Open)
         {
-            //Number of People on a building
-            //query = "SELECT BUILDING_NAME FROM BUILDING_INFO";
-
-            //cmd = new SqlCommand(query, con);
-            //rd = cmd.ExecuteReader();
-            //int temp = 0;
-            //while (rd.Read())
-            //{
 
             building = eachbldg.name;
 
@@ -124,7 +116,7 @@ public class GraphAndRoomColors : MonoBehaviour
                 while (rdf.Read())
                 {
 
-                    room = rdf["ROOM_NO"].ToString(); //ROOM1 //ROOM2 //ROOM3
+                    room = rdf["ROOM_NO"].ToString(); 
 
                     queryID = "SELECT ID FROM INFORMATION";
                     cmdID = new SqlCommand(queryID, con);
@@ -153,10 +145,6 @@ public class GraphAndRoomColors : MonoBehaviour
                 buildings.Add(building);      
             }
 
-
-            //}
-         
-
             for (int i = 0; i < counts.Count; i++)
             {
                 temp += (int)counts[i];
@@ -174,10 +162,6 @@ public class GraphAndRoomColors : MonoBehaviour
                 capacity.Add(capa);
             }
            
-
-
-            //Debug.Log("Capacity " + capacity.Count);
-            //Debug.Log("counting " + counting.Count);
             //GRAPH
             for (int i = 0; i < counting.Count; i++)
             {
@@ -240,21 +224,6 @@ public class GraphAndRoomColors : MonoBehaviour
                 zRotation -= newWedge.fillAmount * 360f;
             }
 
-
-
-
-
-
-
-
-            Debug.Log(counts.Count);
-            Debug.Log(capacity.Count);
-            Debug.Log(counts[0]);
-            Debug.Log(counts[1]);
-
-
-
-
             for (int i = 0; i < roomcount; i++)
             {
                 for (int y = 0; y < r.MyImage.Length; y++)
@@ -296,21 +265,7 @@ public class GraphAndRoomColors : MonoBehaviour
                 }
                
             }
-
-            greenlbl = 0;
-            //if (r.MyImage[0].name.Equals(rms[0].ToString()))
-            //    Debug.Log("THIS IS ROOM 1");
-            //else
-            //    Debug.Log("LEFT");
-
-
-
-
-
         }
-
-
-
     }
 }
 

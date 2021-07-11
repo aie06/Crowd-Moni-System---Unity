@@ -21,7 +21,7 @@ public class Validations : MonoBehaviour
     {
         if(id.text.Equals("") || courseAndDept.text.Equals("") || lastName.text.Equals("") || firstName.text.Equals("") || middleName.text.Equals(""))
         {
-            message.text = "Please fill up all inputfields!";
+            message.text = "Please fill up all input fields!";
             message.color = Color.red;
             BgMessage.gameObject.SetActive(true);
             imgQr.gameObject.SetActive(false);

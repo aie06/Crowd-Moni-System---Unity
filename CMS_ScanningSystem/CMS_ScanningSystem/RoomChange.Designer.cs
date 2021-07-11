@@ -49,13 +49,13 @@
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(32, 28);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(399, 392);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Enter Room Details";
+            this.groupBox1.Text = "Select Room Details";
             // 
             // btnSave
             // 
@@ -63,7 +63,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(130, 298);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(126, 39);
             this.btnSave.TabIndex = 3;
@@ -76,7 +76,7 @@
             this.cbRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRoom.FormattingEnabled = true;
             this.cbRoom.Location = new System.Drawing.Point(71, 218);
-            this.cbRoom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbRoom.Margin = new System.Windows.Forms.Padding(2);
             this.cbRoom.Name = "cbRoom";
             this.cbRoom.Size = new System.Drawing.Size(260, 32);
             this.cbRoom.TabIndex = 2;
@@ -87,7 +87,7 @@
             this.cbFloor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFloor.FormattingEnabled = true;
             this.cbFloor.Location = new System.Drawing.Point(71, 145);
-            this.cbFloor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbFloor.Margin = new System.Windows.Forms.Padding(2);
             this.cbFloor.Name = "cbFloor";
             this.cbFloor.Size = new System.Drawing.Size(260, 32);
             this.cbFloor.TabIndex = 1;
@@ -99,7 +99,7 @@
             this.cbBuilding.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBuilding.FormattingEnabled = true;
             this.cbBuilding.Location = new System.Drawing.Point(71, 66);
-            this.cbBuilding.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbBuilding.Margin = new System.Windows.Forms.Padding(2);
             this.cbBuilding.Name = "cbBuilding";
             this.cbBuilding.Size = new System.Drawing.Size(260, 32);
             this.cbBuilding.TabIndex = 0;
@@ -114,7 +114,7 @@
             this.ClientSize = new System.Drawing.Size(465, 451);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RoomChange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RoomChange";

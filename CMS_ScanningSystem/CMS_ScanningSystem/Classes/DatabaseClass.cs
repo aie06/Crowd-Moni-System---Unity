@@ -108,7 +108,7 @@ namespace CMS_ScanningSystem.Classes
             }
             else if(dt.Rows.Count == 0 && lbname.Text == "")
             {
-                lbTimeInOrOut.Text = "The QR Code is not registered. Please proceed to the authorized person to registered it.";
+                lbTimeInOrOut.Text = "The QR Code is not registered. Please proceed to the authorized person for registration.";
                 lbTimeInOrOut.ForeColor = Color.Red;
             }
           
@@ -125,7 +125,7 @@ namespace CMS_ScanningSystem.Classes
                 if (check)
                 {
                     lbname.Text = dtMethod.Rows[0][2].ToString() + ", " + dtMethod.Rows[0][3].ToString() + " " + dtMethod.Rows[0][4].ToString().Substring(0, 1) + ".";
-                    lbTimeInOrOut.Text = "Your are currently In!\n" + dtTemp.Rows[0][1].ToString() + "\n" + dtTemp.Rows[0][2].ToString() + "\n" + dtTemp.Rows[0][3].ToString();
+                    lbTimeInOrOut.Text = "Make sure you are out in\n" + dtTemp.Rows[0][1].ToString() + " - " + dtTemp.Rows[0][2].ToString() + " - " + dtTemp.Rows[0][3].ToString()+"\nto proceed in this room";
                     lbTimeInOrOut.ForeColor = Color.Red;
                 }
                 else

@@ -11,6 +11,11 @@ using System.IO;
 using System;
 public class DatabaseClass : MonoBehaviour
 {
+    public TMP_Text message;
+    public GameObject BgMessage;
+    public Image imgQr;
+    public Button btnSave;
+
     public TMP_InputField serverName;
     public TMP_InputField portNo;
     public TMP_InputField userId;
@@ -41,6 +46,7 @@ public class DatabaseClass : MonoBehaviour
 
     public void InsertMethod()
     {
+       
         if (!(id.text == "" || course.text == "" || lastname.text == "" || firstname.text == "" || middlename.text == ""))
         {
             byte[] arr = text.ImgToBytes();
@@ -57,13 +63,18 @@ public class DatabaseClass : MonoBehaviour
                     cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
                     con.Close();
-                    Debug.Log("Connection Open");
+                   
                 }
 
             }
             catch (System.Exception ex)
             {
-                Debug.Log(ex);
+
+                message.text = "The ID is already registered.";
+                message.color = Color.red;
+                BgMessage.gameObject.SetActive(true);
+                imgQr.gameObject.SetActive(false);
+                btnSave.gameObject.SetActive(false);
             }
             con.Close();
             var bytes = text.ImgToBytes();
