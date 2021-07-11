@@ -3,7 +3,6 @@ D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Release\R
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Release\CMS_ScanningSystem.exe.config
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Release\CMS_ScanningSystem.exe
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\bin\Release\CMS_ScanningSystem.pdb
-D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Release\CMS_ScanningSystem.csprojAssemblyReference.cache
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Release\CMS_ScanningSystem.Admin.resources
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Release\CMS_ScanningSystem.DatabaseSetup.resources
 D:\Crowd-Moni-System---Unity\CMS_ScanningSystem\CMS_ScanningSystem\obj\Release\CMS_ScanningSystem.RoomChange.resources
