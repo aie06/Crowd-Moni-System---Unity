@@ -38,7 +38,7 @@ namespace CMS_ScanningSystem
                     }
                 }
                 else
-                    MessageBox.Show("Fill up all the fields!");
+                    MessageBox.Show("Fill up all the Input fields!");
             }
             catch (Exception)
             {
